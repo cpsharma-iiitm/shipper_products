@@ -1,0 +1,9 @@
+export { default as catalog } from './endpointGroups/catalog';
+export { default as account } from './endpointGroups/account';
+export { default as addresses } from './endpointGroups/addresses';
+export { default as adminCore } from './endpointGroups/adminCore';
+export { default as adminModules } from './endpointGroups/adminModules';
+export { default as adminOps } from './endpointGroups/adminOps';
+export { default as checkout } from './endpointGroups/checkout';
+export { default as documents } from './endpointGroups/documents';
+export { default as saved } from './endpointGroups/saved';

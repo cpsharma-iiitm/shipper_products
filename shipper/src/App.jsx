@@ -1,8 +1,10 @@
+import { AppRoutes } from './router/routes';
+import { AppProviders } from './app/providers';
+
 export default function App() {
   return (
-    <main style={{ fontFamily: 'sans-serif', padding: '2rem' }}>
-      <h1>Shipper</h1>
-      <p>React + Vite frontend scaffold ready to be populated from the bundle.</p>
-    </main>
+    <AppProviders>
+      <AppRoutes />
+    </AppProviders>
   );
 }
