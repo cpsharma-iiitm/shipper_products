@@ -1,0 +1,60 @@
+.panel {
+  width: 100%;
+}
+
+.stockRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+}
+
+.stock {
+  height: 24px;
+  font-size: var(--sh-font-size-2xs);
+}
+
+.quantity {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.quantityLabel {
+  color: var(--sh-color-ink);
+  font-size: var(--sh-font-size-base);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.save {
+  display: inline-flex;
+  width: var(--sh-control-h-lg);
+  height: var(--sh-control-h-lg);
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--sh-color-border);
+  border-radius: var(--sh-radius-sm);
+  background: var(--sh-color-white);
+  color: var(--sh-color-ink);
+  font-size: var(--sh-font-size-lg);
+  transition:
+    background-color var(--sh-transition),
+    color var(--sh-transition);
+
+  &:hover {
+    background: var(--sh-color-surface);
+    color: var(--sh-color-danger);
+  }
+}
+
+.saved {
+  color: var(--sh-color-danger);
+}

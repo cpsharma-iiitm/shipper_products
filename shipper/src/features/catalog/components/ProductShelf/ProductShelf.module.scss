@@ -1,0 +1,29 @@
+@use '@/styles/mixins' as *;
+
+.section {
+  padding-top: 2rem;
+
+  @include up('md') {
+    padding-top: 3.75rem;
+  }
+}
+
+.phoneAction {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.1875rem;
+  color: var(--sh-color-primary);
+  font-size: var(--sh-font-size-2xs);
+
+  @include up('md') {
+    display: none;
+  }
+}
+
+.grid {
+  margin-top: 1.8125rem;
+
+  @include up('md') {
+    margin-top: 1.5rem;
+  }
+}

@@ -1,0 +1,56 @@
+@use '@/styles/mixins' as *;
+
+.grid {
+  --card-image-height: 145px;
+
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  @include up('md') {
+    --card-image-height: 218px;
+
+    gap: 1.125rem;
+  }
+}
+
+.listing {
+  @include up('md') {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.shelf {
+  @include up('lg') {
+    gap: 1.25rem;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.card {
+  height: 100%;
+}
+
+.desktopOnly {
+  @include down('md') {
+    display: none;
+  }
+}
+
+.skeletonCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.625rem;
+  border: 1px solid var(--sh-color-border);
+  border-radius: var(--sh-radius-lg);
+  background: var(--sh-color-white);
+
+  @include up('md') {
+    padding: 0.8125rem;
+  }
+}
+
+.skeletonPrice {
+  margin-top: 0.75rem;
+}
