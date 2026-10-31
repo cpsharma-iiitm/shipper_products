@@ -3,9 +3,9 @@ import Thumbnail from '@/components/atoms/Thumbnail'
 import DataTable from '@/components/organisms/DataTable'
 import { formatINR, formatNumber } from '@/lib/format'
 import styles from './OrderItemsCard.module.scss'
- 
+
 const money = (key) => (line) => formatINR(line[key], { decimals: 2 })
- 
+
 const COLUMNS = [
   {
     key: 'name',
@@ -31,7 +31,7 @@ const COLUMNS = [
   { key: 'gst', header: 'GST amount', align: 'right', cell: money('gst') },
   { key: 'lineTotal', header: 'Amount', align: 'right', cell: money('lineTotal') },
 ]
- 
+
 /** The lines of an order exactly as stored on the order (prices include GST). */
 export default function OrderItemsCard({ lines }) {
   return (

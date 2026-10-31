@@ -5,7 +5,7 @@ import Timeline from '@/components/molecules/Timeline'
 import { formatDate, formatDateTime, formatShortDateTime } from '@/lib/date'
 import { formatWeightKg } from '@/lib/format'
 import styles from './OrderShipmentCard.module.scss'
- 
+
 /**
  * Shipment details and the order's progress timeline. The steps, their states and timestamps are produced by
  * the backend; the card only formats them.
@@ -29,7 +29,7 @@ export default function OrderShipmentCard({ shipment, timeline }) {
         { label: shipment.deliveredAt ? 'Delivered' : 'Expected delivery', value: shipment.deliveredAt ? formatDateTime(shipment.deliveredAt) : formatDate(shipment.expectedDelivery) },
       ]
     : null
- 
+
   return (
     <Card title="Shipment & tracking" padding="md" radius="md">
       <div className={styles.body}>

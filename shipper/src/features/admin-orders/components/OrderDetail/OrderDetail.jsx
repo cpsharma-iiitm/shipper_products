@@ -20,7 +20,7 @@ import { downloadInvoice } from '@/features/orders'
 import { useDisclosure } from '@/hooks/useDisclosure'
 import { formatDate, formatTime } from '@/lib/date'
 import styles from './OrderDetail.module.scss'
- 
+
 function DetailSkeleton() {
   return (
     <div className={styles.columns} aria-busy="true" aria-label="Loading order">
@@ -35,7 +35,7 @@ function DetailSkeleton() {
     </div>
   )
 }
- 
+
 /**
  * Admin order detail. Read-only apart from cancelling a new or to-pick order; verify, pick, pack and
  * dispatch stay in Store Operation (linked from the fulfilment panel).
@@ -47,7 +47,7 @@ export default function OrderDetail({ orderNumber }) {
     mutationFn: downloadInvoice,
     onError: (failure) => toast.error(getErrorMessage(failure, 'We could not download the invoice. Please try again.')),
   })
- 
+
   return (
     <div className={styles.page}>
       <PageHeader
@@ -69,7 +69,7 @@ export default function OrderDetail({ orderNumber }) {
           </>
         }
       />
- 
+
       {isError && (
         <ErrorState
           title="We could not open this order"
@@ -77,9 +77,9 @@ export default function OrderDetail({ orderNumber }) {
           onRetry={error.status === 404 ? undefined : refetch}
         />
       )}
- 
+
       {isPending && <DetailSkeleton />}
- 
+
       {order && (
         <>
           <div className={styles.statusRow}>
@@ -87,7 +87,7 @@ export default function OrderDetail({ orderNumber }) {
             <StatusBadge status={order.paymentStatus} label={`Payment ${order.paymentStatus === 'paid' ? 'received' : order.paymentStatus}`} />
             {order.onHold && <Badge tone="warning">On hold</Badge>}
           </div>
- 
+
           {order.delay && (
             <Alert
               tone="warning"
@@ -101,7 +101,7 @@ export default function OrderDetail({ orderNumber }) {
               {order.delay.detail}
             </Alert>
           )}
- 
+
           <div className={styles.columns}>
             <div className={styles.stack}>
               <OrderItemsCard lines={order.lines} />
@@ -110,7 +110,7 @@ export default function OrderDetail({ orderNumber }) {
             </div>
             <OrderSidePanels order={order} />
           </div>
- 
+
           <CancelOrderModal order={order} open={cancelDialog.isOpen} onClose={cancelDialog.close} />
         </>
       )}
