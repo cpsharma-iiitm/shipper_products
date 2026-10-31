@@ -1,5 +1,4 @@
 export const authService = {
-  login: async ({ email, password }) => ({ ok: true, user: { email, role: 'customer' }, token: 'demo-token' }),
-  signup: async ({ email, password }) => ({ ok: true, user: { email, role: 'customer' }, token: 'demo-token' }),
-  logout: async () => ({ ok: true }),
+  login: async (payload) => ({ ok: true, user: { name: 'Demo User', role: payload.role || 'customer' } }),
+  signup: async (payload) => ({ ok: true, user: { name: payload.name || 'New User', role: 'customer' } }),
 };
