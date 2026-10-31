@@ -1,2 +1,2 @@
-export { default as adminOrderService } from './services/adminOrderService';
-export { default as useAdminOrders } from './hooks/useAdminOrders';
+export { default as OrderDetail } from './components/OrderDetail'
+export { default as OrdersList } from './components/OrdersList'
