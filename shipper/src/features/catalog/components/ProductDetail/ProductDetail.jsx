@@ -1,19 +1,90 @@
-export default function ProductDetail({ product = {} }) {
+import clsx from 'clsx'
+import { getErrorMessage } from '@/app/services'
+import { paths } from '@/app/router/paths'
+import Badge from '@/components/atoms/Badge'
+import Breadcrumbs from '@/components/molecules/Breadcrumbs'
+import ErrorState from '@/components/molecules/ErrorState'
+import RatingStars from '@/components/molecules/RatingStars'
+import ProductDetailsCard from '@/features/catalog/components/ProductDetailsCard'
+import ProductDetailSkeleton from '@/features/catalog/components/ProductDetailSkeleton'
+import ProductGallery from '@/features/catalog/components/ProductGallery'
+import ProductNotFound from '@/features/catalog/components/ProductNotFound'
+import ProductPrice from '@/features/catalog/components/ProductPrice'
+import PurchasePanel from '@/features/catalog/components/PurchasePanel'
+import RelatedProducts from '@/features/catalog/components/RelatedProducts'
+import ReviewsCard from '@/features/catalog/components/ReviewsCard'
+import VariantPicker from '@/features/catalog/components/VariantPicker'
+import { useProduct } from '@/features/catalog/hooks/useCatalog'
+import DeliveryCheck from '@/features/storefront/components/DeliveryCheck'
+import { formatNumber } from '@/lib/format'
+import styles from './ProductDetail.module.scss'
+
+function ProductView({ product }) {
   return (
-    <section style={{ display: 'grid', gap: 20 }}>
-      <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: 20 }}>
-        <div style={{ background: '#f1f5f9', minHeight: 420, borderRadius: 18, display: 'grid', placeItems: 'center' }}>Product gallery</div>
-        <div style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: 18, padding: 20 }}>
-          <div style={{ color: '#64748b', textTransform: 'uppercase', letterSpacing: 1, fontSize: 12 }}>{product.category || 'Featured'}</div>
-          <h2 style={{ margin: '0.5rem 0' }}>{product.name || 'Product name'}</h2>
-          <div style={{ fontSize: 28, fontWeight: 800, marginBottom: 12 }}>₹{product.price || 0}</div>
-          <p style={{ color: '#475569', lineHeight: 1.6 }}>{product.description || 'A premium product built for reliable everyday use.'}</p>
-          <div style={{ display: 'flex', gap: 12, marginTop: 18 }}>
-            <button type="button">Add to cart</button>
-            <button type="button" variant="secondary">Buy now</button>
-          </div>
+    <div className={clsx('sh-container', styles.page)}>
+      <Breadcrumbs
+        className={styles.breadcrumbs}
+        items={[{ label: 'Home', to: paths.home }, { label: product.categoryLabel, to: paths.category(product.category) }, { label: product.name }]}
+      />
+
+      <div className={styles.layout}>
+        <ProductGallery images={product.gallery} name={product.name} />
+
+        <div className={styles.summary}>
+          {product.badge && (
+            <Badge tone="info" className={styles.badge}>
+              {product.badge}
+            </Badge>
+          )}
+          <h1 className={styles.title}>{product.name}</h1>
+          <p className={styles.tagline}>{product.tagline}</p>
+          <p className={styles.rating}>
+            <RatingStars value={Math.round(product.rating)} tone="warning" />
+            <span>{product.rating.toFixed(1)}</span>
+            <span aria-hidden="true">·</span>
+            <span>{formatNumber(product.reviewCount)} verified reviews</span>
+          </p>
+
+          <ProductPrice product={product} />
+          <p className={styles.description}>{product.description}</p>
+
+          <VariantPicker variants={product.variants} />
+          <PurchasePanel product={product} />
+          <DeliveryCheck className={styles.delivery} />
+          <p className={styles.assurance}>Secure payments · Quality checked · India-wide shipping</p>
         </div>
       </div>
-    </section>
-  );
+
+      <div className={styles.info}>
+        <ProductDetailsCard product={product} />
+        <ReviewsCard reviews={product.reviews} />
+      </div>
+
+      <RelatedProducts slug={product.slug} />
+    </div>
+  )
+}
+
+/** Product page for a slug: gallery, price, purchase actions, delivery check, details, reviews and related products. */
+export default function ProductDetail({ slug }) {
+  const { data: product, isPending, isError, error, refetch } = useProduct(slug)
+
+  if (isPending) {
+    return (
+      <div className={clsx('sh-container', styles.page)}>
+        <ProductDetailSkeleton />
+      </div>
+    )
+  }
+  if (isError) {
+    return error.status === 404 ? (
+      <ProductNotFound />
+    ) : (
+      <div className="sh-container py-5">
+        <ErrorState message={getErrorMessage(error)} onRetry={refetch} />
+      </div>
+    )
+  }
+
+  return <ProductView key={product.slug} product={product} />
 }

@@ -1,0 +1,121 @@
+@use '@/styles/mixins' as *;
+
+.page {
+  padding-bottom: 2.5rem;
+
+  @include up('lg') {
+    padding-bottom: 4rem;
+  }
+}
+
+.intro {
+  padding-top: 1.5rem;
+
+  @include up('md') {
+    padding-top: 2.1875rem;
+  }
+}
+
+.breadcrumbs {
+  display: none;
+  margin-bottom: 1.875rem;
+
+  @include up('md') {
+    display: block;
+  }
+}
+
+.title {
+  font-size: var(--sh-font-size-3xl);
+  font-weight: var(--sh-font-weight-bold);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.description {
+  margin: 0.375rem 0 0;
+  color: var(--sh-color-muted);
+  font-size: var(--sh-font-size-sm);
+
+  @include up('md') {
+    font-size: var(--sh-font-size-base);
+  }
+}
+
+.section {
+  margin-top: 1.75rem;
+  scroll-margin-top: 1rem;
+
+  @include up('md') {
+    margin-top: 2.5rem;
+  }
+}
+
+.sectionTitle {
+  font-size: var(--sh-font-size-xl);
+  font-weight: var(--sh-font-weight-bold);
+  letter-spacing: -0.005em;
+  line-height: 1.25;
+
+  @include up('md') {
+    font-size: var(--sh-font-size-3xl);
+  }
+}
+
+.sectionDescription {
+  margin: 0.375rem 0 0;
+  color: var(--sh-color-muted);
+  font-size: var(--sh-font-size-sm);
+
+  @include up('md') {
+    font-size: var(--sh-font-size-base);
+  }
+}
+
+.coupons {
+  display: grid;
+  gap: 1rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+
+  @include up('md') {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+  }
+
+  > li {
+    display: flex;
+  }
+
+  > li > * {
+    flex: 1;
+  }
+}
+
+.deals {
+  margin-top: 1.25rem;
+  transition: opacity var(--sh-transition);
+
+  @include up('md') {
+    margin-top: 1.5rem;
+  }
+}
+
+.refreshing {
+  opacity: 0.6;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+
+  @include up('md') {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}

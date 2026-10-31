@@ -1,0 +1,111 @@
+$thumb: 16px;
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.end {
+  color: var(--sh-color-ink);
+  font-size: var(--sh-font-size-sm);
+}
+
+.track {
+  position: relative;
+  flex: 1;
+  height: $thumb;
+  margin-inline: calc($thumb / 2);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: calc($thumb / -2);
+    left: calc($thumb / -2);
+    height: 4px;
+    border-radius: var(--sh-radius-pill);
+    background: var(--sh-color-border);
+    transform: translateY(-50%);
+  }
+}
+
+.fill {
+  position: absolute;
+  top: 50%;
+  height: 4px;
+  border-radius: var(--sh-radius-pill);
+  background: var(--sh-color-primary);
+  transform: translateY(-50%);
+}
+
+// Both range inputs sit on top of each other; only their thumbs take pointer events.
+.input {
+  position: absolute;
+  top: 0;
+  left: calc($thumb / -2);
+  width: calc(100% + $thumb);
+  height: $thumb;
+  margin: 0;
+  background: transparent;
+  pointer-events: none;
+  appearance: none;
+
+  &::-webkit-slider-runnable-track {
+    background: transparent;
+    appearance: none;
+  }
+
+  &::-moz-range-track {
+    background: transparent;
+  }
+
+  &::-webkit-slider-thumb {
+    width: $thumb;
+    height: $thumb;
+    border: 3px solid var(--sh-color-white);
+    border-radius: 50%;
+    background: var(--sh-color-navy);
+    box-shadow: var(--sh-shadow-sm);
+    cursor: grab;
+    pointer-events: auto;
+    appearance: none;
+  }
+
+  &::-moz-range-thumb {
+    width: $thumb;
+    height: $thumb;
+    box-sizing: border-box;
+    border: 3px solid var(--sh-color-white);
+    border-radius: 50%;
+    background: var(--sh-color-navy);
+    box-shadow: var(--sh-shadow-sm);
+    cursor: grab;
+    pointer-events: auto;
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: none;
+
+    &::-webkit-slider-thumb {
+      box-shadow: var(--sh-focus-ring);
+    }
+
+    &::-moz-range-thumb {
+      box-shadow: var(--sh-focus-ring);
+    }
+  }
+}
+
+.caption {
+  margin: 0.25rem 0 0;
+  color: var(--sh-color-muted);
+  font-size: var(--sh-font-size-xs);
+}
