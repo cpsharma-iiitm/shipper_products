@@ -1,0 +1,149 @@
+@use '@/styles/mixins' as m;
+
+.item {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.75rem 1rem;
+  padding: 1.25rem 0;
+
+  & + & {
+    border-top: 1px solid var(--sh-color-border);
+  }
+
+  &:first-child {
+    padding-top: 0;
+  }
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+
+  @include m.up('md') {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 1.25rem;
+  }
+}
+
+.imageLink {
+  display: block;
+}
+
+// The thumbnail is large here, so it keeps the storefront card radius instead of scaling with its size.
+.item .thumb {
+  width: 88px;
+  height: 88px;
+  border-radius: var(--sh-radius-lg);
+
+  @include m.up('md') {
+    width: 130px;
+    height: 130px;
+  }
+}
+
+.info {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+
+  @include m.up('md') {
+    padding-top: 0.25rem;
+  }
+}
+
+.name {
+  color: var(--sh-color-ink);
+  font-size: var(--sh-font-size-md);
+  font-weight: var(--sh-font-weight-regular);
+
+  a:hover {
+    color: var(--sh-color-primary);
+  }
+
+  @include m.up('md') {
+    font-size: var(--sh-font-size-lg);
+  }
+}
+
+.meta {
+  margin: 0;
+  color: var(--sh-color-muted);
+  font-size: var(--sh-font-size-base);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 0.125rem;
+}
+
+.remove {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--sh-color-muted);
+  font-size: var(--sh-font-size-sm);
+
+  &:hover {
+    color: var(--sh-color-danger);
+    text-decoration: underline;
+  }
+}
+
+// Mobile: stepper on the left, price on the right under the details. Desktop: a right-aligned column.
+.pricing {
+  display: flex;
+  grid-column: 1 / -1;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+
+  @include m.up('md') {
+    grid-column: auto;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    gap: 0.875rem;
+  }
+}
+
+.price {
+  order: 1;
+  text-align: right;
+
+  @include m.up('md') {
+    order: 0;
+  }
+}
+
+.stepper {
+  order: 0;
+
+  @include m.up('md') {
+    order: 1;
+  }
+}
+
+.total {
+  margin: 0;
+  color: var(--sh-color-navy);
+  font-size: var(--sh-font-size-xl);
+  font-weight: var(--sh-font-weight-bold);
+  line-height: 1.2;
+
+  @include m.up('md') {
+    font-size: var(--sh-font-size-2xl);
+  }
+}
+
+.each {
+  margin: 0.125rem 0 0;
+  color: var(--sh-color-muted);
+  font-size: var(--sh-font-size-xs);
+
+  @include m.up('md') {
+    margin-top: 0.75rem;
+  }
+}
