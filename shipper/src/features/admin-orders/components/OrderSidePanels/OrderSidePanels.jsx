@@ -11,10 +11,10 @@ import { formatMobile } from '@/lib/address'
 import { formatDateTime } from '@/lib/date'
 import { formatINR } from '@/lib/format'
 import styles from './OrderSidePanels.module.scss'
- 
+
 const money = (value) => formatINR(value, { decimals: 2 })
 const dash = (value) => value || '—'
- 
+
 function Customer({ order }) {
   return (
     <Card title="Customer" padding="md" radius="md">
@@ -29,7 +29,7 @@ function Customer({ order }) {
     </Card>
   )
 }
- 
+
 function Delivery({ order }) {
   return (
     <Card title="Delivery address" padding="md" radius="md" actions={order.address.label && <Badge tone="info">{order.address.label}</Badge>}>
@@ -38,7 +38,7 @@ function Delivery({ order }) {
     </Card>
   )
 }
- 
+
 function Payment({ order }) {
   return (
     <Card title="Payment" padding="md" radius="md">
@@ -53,7 +53,7 @@ function Payment({ order }) {
     </Card>
   )
 }
- 
+
 function Fulfilment({ order }) {
   const f = order.fulfilment
   return (
@@ -76,7 +76,7 @@ function Fulfilment({ order }) {
     </Card>
   )
 }
- 
+
 function Refund({ refund }) {
   const reason = CANCEL_REASON_OPTIONS.find((option) => option.value === refund.reason)?.label
   return (
@@ -93,7 +93,7 @@ function Refund({ refund }) {
     </Card>
   )
 }
- 
+
 /** The right-hand column of the order detail: customer, address, payment, fulfilment and (if any) refund. */
 export default function OrderSidePanels({ order }) {
   return (

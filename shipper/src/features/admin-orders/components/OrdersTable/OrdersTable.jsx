@@ -7,14 +7,14 @@ import DataTable from '@/components/organisms/DataTable'
 import { formatDate, formatTime } from '@/lib/date'
 import { formatINR, formatNumber } from '@/lib/format'
 import styles from './OrdersTable.module.scss'
- 
+
 const stacked = (first, second) => (
   <span className={styles.stacked}>
     <span>{first}</span>
     <span className={styles.secondary}>{second}</span>
   </span>
 )
- 
+
 const COLUMNS = [
   {
     key: 'placedAt',
@@ -54,7 +54,7 @@ const COLUMNS = [
     ),
   },
 ]
- 
+
 /** The admin order list. Paging, sorting and filtering are the backend's; this shows the current page. */
 export default function OrdersTable({ rows, loading, sort, onSortChange, pagination, emptyState, onOpen }) {
   return (

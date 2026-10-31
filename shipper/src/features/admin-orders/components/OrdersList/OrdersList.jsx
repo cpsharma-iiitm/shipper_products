@@ -14,7 +14,7 @@ import { ordersSheet, ordersSheetRows } from '@/features/admin-orders/lib/orders
 import { listAdminOrders } from '@/features/admin-orders/services/adminOrderService'
 import { formatNumber } from '@/lib/format'
 import styles from './OrdersList.module.scss'
- 
+
 // The summary cards are shortcuts to the same status filter as the "Status" select.
 const SUMMARY_CARDS = [
   { status: '', label: 'All orders', count: 'all' },
@@ -22,20 +22,20 @@ const SUMMARY_CARDS = [
   { status: 'in_transit', label: 'In transit', count: 'in_transit' },
   { status: 'delivered', label: 'Delivered', count: 'delivered' },
 ]
- 
+
 /** The admin Orders screen: every order with search, filters, sort, paging and Excel export. */
 export default function OrdersList() {
   const navigate = useNavigate()
   const list = useListParams({ pageSize: 10, filters: { status: '', payment: '', range: 'all', from: '', to: '' } })
   const { data, isPending, isError, error, refetch } = useAdminOrders(list.apiParams)
   const exporter = useExcelExport()
- 
+
   const exportOrders = () =>
     exporter.mutate({
       ...ordersSheet,
       getRows: async () => ordersSheetRows(await fetchAllPages((page) => listAdminOrders({ ...list.apiParams, page, pageSize: EXPORT_PAGE_SIZE }))),
     })
- 
+
   const toolbarFilters = [
     {
       key: 'status',
@@ -66,11 +66,11 @@ export default function OrdersList() {
       ),
     },
   ]
- 
+
   return (
     <div className={styles.page}>
       <PageHeader title="Orders" description="Search every order, check its payment and delivery status, and open the full details." />
- 
+
       <StatGrid>
         {SUMMARY_CARDS.map((card) => (
           <StatCard
@@ -83,7 +83,7 @@ export default function OrdersList() {
           />
         ))}
       </StatGrid>
- 
+
       <ListToolbar
         search={{ ...list.search, label: 'Search orders', placeholder: 'Search order, customer or mobile' }}
         filters={toolbarFilters}
@@ -94,7 +94,7 @@ export default function OrdersList() {
           Export
         </Button>
       </ListToolbar>
- 
+
       {isError ? (
         <ErrorState message={getErrorMessage(error)} onRetry={refetch} />
       ) : (
