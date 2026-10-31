@@ -1,0 +1,23 @@
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+ 
+.link {
+  color: var(--sh-color-primary);
+ 
+  &:hover {
+    text-decoration: underline;
+  }
+}
+ 
+.note {
+  margin: 0.75rem 0 0;
+  color: var(--sh-color-muted);
+  font-size: var(--sh-font-size-sm);
+}
+ 
+.action {
+  margin-top: 1rem;
+}

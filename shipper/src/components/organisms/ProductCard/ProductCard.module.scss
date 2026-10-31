@@ -1,0 +1,207 @@
+@use '@/styles/mixins' as *;
+
+// Anatomy measured at the 1440 artboard (13px padding, 218px picture, name reserved to two lines) and
+// the 390 artboard (10px padding, 145px picture, stacked buttons).
+.card {
+    position: relative;
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    padding: 0.625rem;
+    border: 1px solid var(--sh-color-border);
+    border-radius: var(--sh-radius-lg);
+    background: var(--sh-color-white);
+    transition:
+        border-color var(--sh-transition),
+        box-shadow var(--sh-transition);
+
+    &:hover,
+    &:focus-within {
+        border-color: color-mix(in srgb, var(--sh-color-primary) 30%, var(--sh-color-border));
+        box-shadow: var(--sh-shadow-md);
+    }
+
+    @include up('md') {
+        padding: 0.8125rem;
+    }
+}
+
+.media {
+    position: relative;
+    height: 145px;
+    overflow: hidden;
+    border-radius: var(--sh-radius-md);
+    background: var(--sh-color-surface);
+
+    @include up('md') {
+        height: 218px;
+    }
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.unavailable .image {
+    opacity: 0.55;
+    filter: grayscale(0.6);
+}
+
+.soldOutBadge {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+}
+
+.save {
+    position: absolute;
+    z-index: 2;
+    top: 0.5rem;
+    right: 0.5rem;
+    display: inline-flex;
+    width: 32px;
+    height: 32px;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--sh-color-white) 92%, transparent);
+    color: var(--sh-color-ink);
+    box-shadow: var(--sh-shadow-sm);
+    transition:
+        color var(--sh-transition),
+        transform var(--sh-transition);
+
+    &:hover {
+        color: var(--sh-color-danger);
+        transform: scale(1.06);
+    }
+}
+
+.saved {
+    color: var(--sh-color-danger);
+}
+
+.meta {
+    margin: 0.625rem 0 0;
+    color: var(--sh-color-muted);
+    font-size: 0.625rem;
+    line-height: 1rem;
+
+    @include up('md') {
+        font-size: var(--sh-font-size-2xs);
+    }
+}
+
+.name {
+    // Two lines are always reserved so prices line up across a row of cards.
+    min-height: calc(2 * 1.3em);
+    margin: 0.5rem 0 0;
+    font-size: var(--sh-font-size-sm);
+    line-height: 1.3;
+
+    @include up('md') {
+        margin-top: 0.6875rem;
+        font-size: var(--sh-font-size-md);
+    }
+}
+
+.nameLink {
+    color: var(--sh-color-navy);
+
+    // Stretches the link over the whole card; the controls below sit above it.
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+    }
+
+    &:hover {
+        color: var(--sh-color-primary);
+    }
+
+    &:focus-visible {
+        outline: none;
+        box-shadow: none;
+
+        &::after {
+            box-shadow: var(--sh-focus-ring);
+        }
+    }
+}
+
+.price {
+    margin-top: 0.75rem;
+
+    @include up('md') {
+        margin-top: 1rem;
+    }
+}
+
+// The phone artboard sets the price one step smaller than the desktop one (specificity beats PriceDisplay's size class).
+.card .price {
+    @include down('md') {
+        > :first-child {
+            font-size: var(--sh-font-size-lg);
+        }
+
+        > :not(:first-child) {
+            font-size: 0.625rem;
+        }
+    }
+}
+
+.stock {
+    margin: 0.5rem 0 0;
+    font-size: var(--sh-font-size-2xs);
+    line-height: 1.125rem;
+
+    @include up('md') {
+        margin-top: 0.75rem;
+    }
+}
+
+.inStock {
+    color: var(--sh-color-success);
+}
+
+.lowStock {
+    color: var(--sh-color-warning);
+}
+
+.soldOut {
+    color: var(--sh-color-danger);
+    font-weight: var(--sh-font-weight-medium);
+}
+
+.controls {
+    position: relative;
+    z-index: 1;
+    margin-top: auto;
+    padding-top: 0.5rem;
+
+    @include up('md') {
+        padding-top: 0.5625rem;
+    }
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.quantityLabel {
+    color: var(--sh-color-muted);
+    font-size: var(--sh-font-size-xs);
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.6875rem;
+}

@@ -1,14 +1,23 @@
-export default function Stepper({ steps = [], currentStep = 0 }) {
+import clsx from 'clsx'
+import Icon from '@/components/atoms/Icon'
+import styles from './Stepper.module.scss'
+
+/** Horizontal progress (e.g. Address → Payment → Review). `currentIndex` is zero-based. */
+export default function Stepper({ steps, currentIndex, className }) {
   return (
-    <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-      {steps.map((step, index) => (
-        <div key={step} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <div style={{ width: 24, height: 24, borderRadius: '50%', display: 'grid', placeItems: 'center', background: index <= currentStep ? '#0f172a' : '#e2e8f0', color: index <= currentStep ? '#fff' : '#64748b', fontSize: 12 }}>
-            {index + 1}
-          </div>
-          <span>{step}</span>
-        </div>
-      ))}
-    </div>
-  );
+    <ol className={clsx(styles.stepper, className)}>
+      {steps.map((step, index) => {
+        const state = index < currentIndex ? 'done' : index === currentIndex ? 'current' : 'upcoming'
+        return (
+          <li key={step.key} className={clsx(styles.step, styles[state])} aria-current={state === 'current' ? 'step' : undefined}>
+            <span className={styles.marker}>{state === 'done' ? <Icon name="check-lg" /> : index + 1}</span>
+            <span className={styles.label}>
+              {step.label}
+              <span className="visually-hidden">{state === 'done' ? ' (completed)' : state === 'current' ? ' (current step)' : ''}</span>
+            </span>
+          </li>
+        )
+      })}
+    </ol>
+  )
 }

@@ -1,8 +1,16 @@
-export default function EmptyState({ title = 'No data', description = 'Nothing to show yet.' }) {
+import clsx from 'clsx'
+import Icon from '@/components/atoms/Icon'
+import styles from './EmptyState.module.scss'
+/** "Nothing here yet" panel for empty lists, carts, search results. `action` is typically a Button. */
+export default function EmptyState({ icon = 'inbox', title, description, action, compact = false, className }) {
   return (
-    <div style={{ textAlign: 'center', padding: '2rem 1rem', color: '#64748b' }}>
-      <h3 style={{ marginBottom: 6 }}>{title}</h3>
-      <p style={{ margin: 0 }}>{description}</p>
+    <div className={clsx(styles.state, compact && styles.compact, className)}>
+      <span className={styles.icon}>
+        <Icon name={icon} />
+      </span>
+      <h3 className={styles.title}>{title}</h3>
+      {description && <p className={styles.description}>{description}</p>}
+      {action && <div className={styles.action}>{action}</div>}
     </div>
-  );
+  )
 }

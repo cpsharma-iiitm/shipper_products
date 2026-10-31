@@ -1,0 +1,24 @@
+.bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 1rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid color-mix(in srgb, var(--sh-color-primary) 25%, transparent);
+    border-radius: var(--sh-radius-md);
+    background: var(--sh-color-primary-tint);
+}
+
+.count {
+    margin: 0;
+    color: var(--sh-color-primary);
+    font-size: var(--sh-font-size-base);
+    font-weight: var(--sh-font-weight-semibold);
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-left: auto;
+}

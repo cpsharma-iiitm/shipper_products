@@ -1,7 +1,14 @@
-export default function FilterChip({ label, active = false, onClick }) {
+import clsx from 'clsx'
+import Icon from '@/components/atoms/Icon'
+import styles from './FilterChip.module.scss'
+/** Applied-filter pill with a remove button: "Haldi ×". */
+export default function FilterChip({ label, onRemove, className }) {
   return (
-    <button type="button" onClick={onClick} style={{ padding: '0.45rem 0.8rem', borderRadius: 999, border: `1px solid ${active ? '#0f172a' : '#cbd5e1'}`, background: active ? '#0f172a' : '#fff', color: active ? '#fff' : '#0f172a', cursor: 'pointer' }}>
+    <span className={clsx(styles.chip, className)}>
       {label}
-    </button>
-  );
+      <button type="button" className={styles.remove} aria-label={`Remove filter: ${label}`} onClick={onRemove}>
+        <Icon name="x" />
+      </button>
+    </span>
+  )
 }

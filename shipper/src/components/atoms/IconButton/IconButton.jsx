@@ -1,7 +1,17 @@
-export default function IconButton({ label, onClick, style = {} }) {
+import clsx from 'clsx'
+import Icon from '@/components/atoms/Icon'
+import styles from './IconButton.module.scss'
+/** Icon-only button; `label` is required because it is the accessible name. tone: neutral | primary | danger. */
+export default function IconButton({ icon, label, tone = 'neutral', size = 'md', className, type = 'button', ...rest }) {
   return (
-    <button type="button" onClick={onClick} style={{ border: '1px solid #e2e8f0', borderRadius: 10, background: '#fff', padding: '0.55rem 0.7rem', cursor: 'pointer', ...style }}>
-      {label}
+    <button
+      type={type}
+      aria-label={label}
+      title={label}
+      className={clsx(styles.button, styles[tone], styles[size], className)}
+      {...rest}
+    >
+      <Icon name={icon} />
     </button>
-  );
+  )
 }

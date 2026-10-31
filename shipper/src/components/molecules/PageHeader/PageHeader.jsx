@@ -1,11 +1,19 @@
-export default function PageHeader({ title, subtitle, actions }) {
+import clsx from 'clsx'
+import styles from './PageHeader.module.scss'
+/**
+* Page title block: heading, supporting line and page-level actions.
+* variant: admin (24px title, content-width) | storefront (display title for account and order pages)
+* `actions` is any node (usually one or two Buttons) shown on the right, wrapping below on mobile.
+*/
+export default function PageHeader({ title, description, eyebrow, actions, variant = 'admin', as: Heading = 'h1', className }) {
   return (
-    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12, marginBottom: '1rem' }}>
-      <div>
-        <h2 style={{ margin: 0 }}>{title}</h2>
-        {subtitle ? <p style={{ margin: '0.4rem 0 0', color: '#64748b' }}>{subtitle}</p> : null}
+    <header className={clsx(styles.header, styles[variant], className)}>
+      <div className={styles.text}>
+        {eyebrow && <p className={styles.eyebrow}>{eyebrow}</p>}
+        <Heading className={styles.title}>{title}</Heading>
+        {description && <p className={styles.description}>{description}</p>}
       </div>
-      {actions ? <div>{actions}</div> : null}
-    </div>
-  );
+      {actions && <div className={styles.actions}>{actions}</div>}
+    </header>
+  )
 }

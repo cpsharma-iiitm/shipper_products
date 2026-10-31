@@ -1,11 +1,8 @@
-import { httpRequest } from '../http';
-
-const saved = {
-  list: () => httpRequest('/api/saved'),
-  add: (productId) => httpRequest('/api/saved', {
-    method: 'POST',
-    body: JSON.stringify({ productId }),
-  }),
-};
-
-export default saved;
+// Products a signed-in customer has saved for later (heart icon, "Saved products" page).
+// ASSUMPTION — confirm with backend team: all paths, methods and payload shapes.
+export const savedEndpoints = {
+  savedProducts: {
+    list: '/saved-products',
+    item: (productCode) => `/saved-products/${productCode}`,
+  },
+}

@@ -1,15 +1,27 @@
-export default function Alert({ title, children, tone = 'info' }) {
-  const colors = {
-    info: { bg: '#eff6ff', color: '#1d4ed8' },
-    success: { bg: '#ecfdf5', color: '#166534' },
-    warning: { bg: '#fff7ed', color: '#9a5b00' },
-    error: { bg: '#fef2f2', color: '#b91c1c' },
-  };
-
+import clsx from 'clsx'
+import Icon from '@/components/atoms/Icon'
+import IconButton from '@/components/atoms/IconButton'
+import styles from './Alert.module.scss'
+const DEFAULT_ICONS = {
+  info: 'info-circle-fill',
+  success: 'check-circle-fill',
+  warning: 'exclamation-triangle-fill',
+  danger: 'exclamation-octagon-fill',
+}
+/**
+* Inline banner. tone: info | success | warning | danger. Warning and danger are announced
+* immediately (role="alert"); info and success politely (role="status").
+*/
+export default function Alert({ tone = 'info', title, icon, action, onDismiss, className, children }) {
   return (
-    <div style={{ background: colors[tone]?.bg || colors.info.bg, color: colors[tone]?.color || colors.info.color, padding: '0.8rem 1rem', borderRadius: 12 }}>
-      {title ? <strong style={{ display: 'block', marginBottom: 4 }}>{title}</strong> : null}
-      {children}
+    <div role={tone === 'danger' || tone === 'warning' ? 'alert' : 'status'} className={clsx(styles.alert, styles[tone], className)}>
+      <Icon name={icon ?? DEFAULT_ICONS[tone]} className={styles.icon} />
+      <div className={styles.body}>
+        {title && <p className={styles.title}>{title}</p>}
+        {children && <div className={styles.message}>{children}</div>}
+      </div>
+      {action && <div className={styles.action}>{action}</div>}
+      {onDismiss && <IconButton icon="x-lg" label="Dismiss" size="sm" onClick={onDismiss} />}
     </div>
-  );
+  )
 }

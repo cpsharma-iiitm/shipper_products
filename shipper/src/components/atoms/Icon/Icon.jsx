@@ -1,3 +1,12 @@
-export default function Icon({ name, size = 18, color = 'currentColor', style = {} }) {
-  return <span aria-label={name} style={{ display: 'inline-flex', width: size, height: size, color, ...style }}>{name}</span>;
+import clsx from 'clsx'
+/** Bootstrap Icons glyph. Decorative unless `label` is given: <Icon name="search" /> */
+export default function Icon({ name, size, label, className, style, ...rest }) {
+  return (
+    <i
+      className={clsx('bi', `bi-${name}`, className)}
+      style={size ? { fontSize: size, ...style } : style}
+      {...(label ? { role: 'img', 'aria-label': label } : { 'aria-hidden': true })}
+      {...rest}
+    />
+  )
 }

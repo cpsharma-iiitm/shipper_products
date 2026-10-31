@@ -1,0 +1,81 @@
+.timeline {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.item {
+    position: relative;
+    display: flex;
+    gap: 0.875rem;
+    padding-bottom: 1.5rem;
+
+    &:last-child {
+        padding-bottom: 0;
+    }
+
+    // Connector to the next step: blue after a completed step, light otherwise.
+    &:not(:last-child)::before {
+        content: '';
+        position: absolute;
+        top: 1.125rem;
+        bottom: -0.125rem;
+        left: 0.4375rem;
+        width: 2px;
+        background: var(--sh-color-border);
+    }
+}
+
+.done:not(:last-child)::before {
+    background: var(--sh-color-primary);
+}
+
+.dot {
+    position: relative;
+    z-index: 1;
+    width: 0.9375rem;
+    height: 0.9375rem;
+    flex: none;
+    margin-top: 0.1875rem;
+    border: 3px solid var(--sh-color-border);
+    border-radius: 50%;
+    background: var(--sh-color-white);
+}
+
+.done .dot,
+.current .dot {
+    border-color: var(--sh-color-primary);
+    background: var(--sh-color-primary);
+}
+
+.current .dot {
+    box-shadow: 0 0 0 4px var(--sh-color-primary-tint);
+}
+
+.content {
+    min-width: 0;
+}
+
+.title,
+.description,
+.timestamp {
+    margin: 0;
+}
+
+.title {
+    color: var(--sh-color-ink);
+    font-size: var(--sh-font-size-base);
+    font-weight: var(--sh-font-weight-semibold);
+}
+
+.upcoming .title {
+    color: var(--sh-color-muted);
+    font-weight: var(--sh-font-weight-medium);
+}
+
+.description,
+.timestamp {
+    margin-top: 0.125rem;
+    color: var(--sh-color-muted);
+    font-size: var(--sh-font-size-xs);
+}

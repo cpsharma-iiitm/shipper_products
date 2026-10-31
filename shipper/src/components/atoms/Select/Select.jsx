@@ -1,12 +1,28 @@
-export default function Select({ value, onChange, options = [], placeholder = 'Select', style = {} }) {
+import clsx from 'clsx'
+import Icon from '@/components/atoms/Icon'
+import styles from './Select.module.scss'
+/**
+* Native <select> with the Shipper control look; use it for short, simple lists.
+* For searchable, multi or prefixed dropdowns use the SelectField molecule (react-select).
+*/
+export default function Select({
+  ref,
+  size = 'lg',
+  variant = 'outline',
+  invalid = false,
+  className,
+  wrapperClassName,
+  children,
+  ...rest
+}) {
   return (
-    <select value={value} onChange={onChange} style={{ border: '1px solid #cbd5e1', borderRadius: 10, padding: '0.7rem 0.8rem', background: '#fff', ...style }}>
-      {placeholder ? <option value="">{placeholder}</option> : null}
-      {options.map((option) => (
-        <option key={option.value ?? option} value={option.value ?? option}>
-          {option.label ?? option.value ?? option}
-        </option>
-      ))}
-    </select>
-  );
+    <div
+      className={clsx(styles.wrapper, styles[size], variant === 'filled' && styles.filled, invalid && styles.invalid, wrapperClassName)}
+    >
+      <select ref={ref} className={clsx(styles.select, className)} aria-invalid={invalid || undefined} {...rest}>
+        {children}
+      </select>
+      <Icon name="chevron-down" className={styles.chevron} />
+    </div>
+  )
 }

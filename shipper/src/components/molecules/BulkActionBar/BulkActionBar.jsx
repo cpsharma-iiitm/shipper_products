@@ -1,3 +1,22 @@
-export default function BulkActionBar({ children }) {
-  return <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', padding: '0.75rem 1rem', background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: 12 }}>{children}</div>;
+import clsx from 'clsx'
+import Button from '@/components/atoms/Button'
+import { pluralize } from '@/lib/format'
+import styles from './BulkActionBar.module.scss'
+/**
+* Shown above a table while rows are selected: "3 selected · Clear" plus the action buttons passed
+* as `children`. Renders nothing for an empty selection.
+*/
+export default function BulkActionBar({ selectedCount, itemLabel = 'item', onClear, className, children }) {
+  if (selectedCount <= 0) return null
+  return (
+    <div role="region" aria-label="Bulk actions" className={clsx(styles.bar, className)}>
+      <p className={styles.count} aria-live="polite">
+        {pluralize(selectedCount, itemLabel)} selected
+      </p>
+      <Button variant="link" size="sm" onClick={onClear}>
+        Clear selection
+      </Button>
+      <div className={styles.actions}>{children}</div>
+    </div>
+  )
 }

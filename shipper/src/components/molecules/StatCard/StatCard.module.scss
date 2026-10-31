@@ -1,0 +1,128 @@
+.card {
+    display: flex;
+    min-width: 0;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--sh-color-border);
+    border-radius: var(--sh-radius-md);
+    background: var(--sh-color-white);
+    color: var(--sh-color-ink);
+    text-align: left;
+}
+
+.interactive {
+    width: 100%;
+    cursor: pointer;
+    transition:
+        border-color var(--sh-transition),
+        background-color var(--sh-transition);
+
+    &:hover:not(.selected) {
+        border-color: var(--sh-color-primary);
+    }
+}
+
+.selected {
+    border-color: var(--sh-color-primary);
+    background: var(--sh-color-primary-tint);
+
+    .value {
+        color: var(--sh-color-primary);
+    }
+}
+
+.icon {
+    display: inline-flex;
+    width: 2.5rem;
+    height: 2.5rem;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--sh-radius-md);
+    background: var(--sh-color-primary-tint);
+    color: var(--sh-color-primary);
+    font-size: var(--sh-font-size-lg);
+}
+
+.body {
+    display: flex;
+    min-width: 0;
+    flex: 1;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.label {
+    color: var(--sh-color-muted);
+    font-size: var(--sh-font-size-sm);
+    font-weight: var(--sh-font-weight-medium);
+}
+
+.value {
+    color: var(--sh-color-navy);
+    font-size: var(--sh-font-size-2xl);
+    font-weight: var(--sh-font-weight-bold);
+    line-height: 1.15;
+}
+
+.delta {
+    font-size: var(--sh-font-size-xs);
+    font-weight: var(--sh-font-weight-medium);
+}
+
+.success {
+    color: var(--sh-color-success);
+}
+
+.danger {
+    color: var(--sh-color-danger);
+}
+
+.neutral {
+    color: var(--sh-color-muted);
+}
+
+.hint {
+    color: var(--sh-color-muted);
+    font-size: var(--sh-font-size-xs);
+}
+
+// Inline: label on the left, number on the right (Products and Delayed Orders summaries).
+.inline {
+    align-items: center;
+    padding: 0.625rem 1rem;
+
+    .body {
+        flex-flow: row wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.25rem 0.75rem;
+    }
+
+    .value {
+        font-size: var(--sh-font-size-xl);
+    }
+}
+
+// Large: the dashboard's headline figures (design p-13): roomier card, smaller label and delta.
+.sizeLg {
+    padding: 0.875rem 1rem;
+
+    .body {
+        gap: 0.5rem;
+    }
+
+    .label {
+        font-size: var(--sh-font-size-xs);
+    }
+
+    .value {
+        margin-top: 0.125rem;
+    }
+
+    .delta {
+        margin-top: 0.25rem;
+        font-size: var(--sh-font-size-2xs);
+    }
+}

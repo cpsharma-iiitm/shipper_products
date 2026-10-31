@@ -1,0 +1,97 @@
+.list {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 0;
+    background: transparent;
+    color: var(--sh-color-muted);
+    font-size: var(--sh-font-size-base);
+    font-weight: var(--sh-font-weight-medium);
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+    transition:
+        color var(--sh-transition),
+        background-color var(--sh-transition),
+        border-color var(--sh-transition);
+
+    &:hover:not(.active) {
+        color: var(--sh-color-ink);
+    }
+}
+
+.count {
+    display: inline-flex;
+    min-width: 1.25rem;
+    height: 1.25rem;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0.375rem;
+    border-radius: var(--sh-radius-pill);
+    background: var(--sh-color-surface);
+    color: var(--sh-color-muted);
+    font-size: var(--sh-font-size-2xs);
+    font-weight: var(--sh-font-weight-semibold);
+}
+
+// ── Underline: product / order status tabs ──────────────────────────────────────────────────────
+.underline {
+    overflow-x: auto;
+    border-bottom: 1px solid var(--sh-color-border);
+
+    .list {
+        gap: 1.5rem;
+    }
+
+    .tab {
+        height: 44px;
+        margin-bottom: -1px;
+        border-bottom: 2px solid transparent;
+    }
+
+    .active {
+        border-bottom-color: var(--sh-color-primary);
+        color: var(--sh-color-primary);
+
+        .count {
+            background: var(--sh-color-primary-tint);
+            color: var(--sh-color-primary);
+        }
+    }
+}
+
+// ── Pill: Store Operation tab bar ───────────────────────────────────────────────────────────────
+.pill {
+    overflow-x: auto;
+    padding: 0.25rem;
+    border: 1px solid var(--sh-color-border);
+    border-radius: var(--sh-radius-md);
+    background: var(--sh-color-white);
+
+    .list {
+        gap: 0.25rem;
+    }
+
+    .tab {
+        height: 36px;
+        padding: 0 0.875rem;
+        border-radius: var(--sh-radius-sm);
+    }
+
+    .active {
+        background: var(--sh-color-primary);
+        color: var(--sh-color-white);
+
+        .count {
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--sh-color-white);
+        }
+    }
+}

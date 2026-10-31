@@ -1,8 +1,19 @@
-export default function Radio({ checked = false, label, name, onChange }) {
+import { useId } from 'react'
+import clsx from 'clsx'
+import styles from './Radio.module.scss'
+/** Radio button with an optional visible label; give related radios the same `name`. */
+export default function Radio({ ref, label, hint, className, id, ...rest }) {
+  const generatedId = useId()
+  const inputId = id ?? generatedId
   return (
-    <label style={{ display: 'inline-flex', alignItems: 'center', gap: 8, cursor: 'pointer' }}>
-      <input type="radio" name={name} checked={checked} onChange={onChange} />
-      {label ? <span>{label}</span> : null}
-    </label>
-  );
+    <span className={clsx(styles.root, className)}>
+      <input ref={ref} id={inputId} type="radio" className={styles.control} {...rest} />
+      {label && (
+        <label htmlFor={inputId} className={styles.label}>
+          {label}
+          {hint && <span className={styles.hint}> {hint}</span>}
+        </label>
+      )}
+    </span>
+  )
 }

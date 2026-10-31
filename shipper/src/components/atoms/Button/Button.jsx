@@ -1,24 +1,49 @@
-export default function Button({ children, variant = 'primary', size = 'md', type = 'button', onClick, disabled = false, style = {} }) {
-  const palette = {
-    primary: { background: '#0f172a', color: '#fff' },
-    secondary: { background: '#e2e8f0', color: '#0f172a' },
-    ghost: { background: 'transparent', color: '#0f172a', border: '1px solid #cbd5e1' },
-  };
-
-  const sizes = {
-    sm: { padding: '0.45rem 0.9rem', fontSize: 12 },
-    md: { padding: '0.7rem 1.1rem', fontSize: 14 },
-    lg: { padding: '0.9rem 1.4rem', fontSize: 15 },
-  };
-
+import clsx from 'clsx'
+import Icon from '@/components/atoms/Icon'
+import Spinner from '@/components/atoms/Spinner'
+import styles from './Button.module.scss'
+/**
+* variant: primary | secondary | ghost | danger | link size: sm | md | lg
+* Render as a router link with `as={Link} to="/cart"`; a disabled non-button is made inert.
+*/
+export default function Button({
+  as: Component = 'button',
+  variant = 'primary',
+  size = 'md',
+  fullWidth = false,
+  loading = false,
+  disabled = false,
+  leftIcon,
+  rightIcon,
+  className,
+  children,
+  type,
+  onClick,
+  ...rest
+}) {
+  const isNativeButton = Component === 'button'
+  const isDisabled = disabled || loading
+  const handleClick = (event) => {
+    if (isDisabled) {
+      event.preventDefault()
+      return
+    }
+    onClick?.(event)
+  }
+  const stateProps = isNativeButton
+    ? { type: type ?? 'button', disabled: isDisabled }
+    : { 'aria-disabled': isDisabled || undefined, tabIndex: isDisabled ? -1 : undefined }
   return (
-    <button
-      type={type}
-      onClick={onClick}
-      disabled={disabled}
-      style={{ border: 'none', borderRadius: 10, cursor: disabled ? 'not-allowed' : 'pointer', opacity: disabled ? 0.6 : 1, ...palette[variant] || palette.primary, ...sizes[size] || sizes.md, ...style }}
+    <Component
+      className={clsx(styles.button, styles[variant], styles[size], fullWidth && styles.fullWidth, className)}
+      aria-busy={loading || undefined}
+      onClick={handleClick}
+      {...stateProps}
+      {...rest}
     >
+      {loading ? <Spinner size="sm" decorative /> : leftIcon && <Icon name={leftIcon} />}
       {children}
-    </button>
-  );
+      {!loading && rightIcon && <Icon name={rightIcon} />}
+    </Component>
+  )
 }

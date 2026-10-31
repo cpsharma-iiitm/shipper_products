@@ -1,0 +1,19 @@
+.summary {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+}
+
+.contact {
+    margin: 0;
+    color: var(--sh-color-ink);
+    font-size: var(--sh-font-size-base);
+    font-weight: var(--sh-font-weight-medium);
+}
+
+.address {
+    margin: 0;
+    color: var(--sh-color-muted);
+    font-size: var(--sh-font-size-base);
+    line-height: 1.5;
+}

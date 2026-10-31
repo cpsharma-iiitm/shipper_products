@@ -1,0 +1,50 @@
+@use '@/styles/mixins' as *;
+
+.wrapper {
+    @include control-wrapper;
+
+    &.sm {
+        height: var(--sh-control-h-sm);
+    }
+
+    &.md {
+        height: var(--sh-control-h-md);
+    }
+
+    &.lg {
+        height: var(--sh-control-h-lg);
+    }
+
+    &.filled {
+        @include control-variant-filled;
+    }
+
+    &.invalid {
+        @include control-invalid;
+    }
+
+    &:has(.input:disabled) {
+        background: var(--sh-color-surface);
+    }
+}
+
+.input {
+    @include control-field;
+}
+
+.hasLeftIcon {
+    padding-left: 2.5rem;
+}
+
+.leftIcon {
+    position: absolute;
+    left: 0.875rem;
+    color: var(--sh-color-muted);
+    pointer-events: none;
+}
+
+.rightSlot {
+    display: inline-flex;
+    align-items: center;
+    padding-right: 0.25rem;
+}

@@ -1,0 +1,19 @@
+.thumbnail {
+    display: inline-flex;
+    width: var(--thumbnail-size, 40px);
+    height: var(--thumbnail-size, 40px);
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: max(6px, calc(var(--thumbnail-size, 40px) * 0.16));
+    background: var(--sh-color-surface);
+    color: var(--sh-color-muted);
+    font-size: calc(var(--thumbnail-size, 40px) * 0.4);
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

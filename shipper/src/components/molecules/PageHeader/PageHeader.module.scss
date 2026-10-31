@@ -1,0 +1,71 @@
+@use '@/styles/mixins' as m;
+
+.header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem 1.5rem;
+}
+
+.text {
+    min-width: 0;
+    flex: 1 1 18rem;
+}
+
+.eyebrow {
+    margin: 0 0 0.25rem;
+    color: var(--sh-color-primary);
+    font-size: var(--sh-font-size-xs);
+    font-weight: var(--sh-font-weight-semibold);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.title {
+    margin: 0;
+    color: var(--sh-color-navy);
+    font-weight: var(--sh-font-weight-bold);
+    letter-spacing: -0.01em;
+}
+
+.description {
+    margin: 0.25rem 0 0;
+    color: var(--sh-color-muted);
+}
+
+.actions {
+    display: flex;
+    min-width: 0;
+    max-width: 100%;
+    flex: none;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.admin {
+    .title {
+        font-size: var(--sh-font-size-2xl);
+        line-height: 1.25;
+    }
+
+    .description {
+        font-size: var(--sh-font-size-sm);
+    }
+}
+
+.storefront {
+    .title {
+        font-size: var(--sh-font-size-2xl);
+        line-height: 1.2;
+
+        @include m.up('md') {
+            font-size: var(--sh-font-size-3xl);
+        }
+    }
+
+    .description {
+        font-size: var(--sh-font-size-base);
+    }
+}

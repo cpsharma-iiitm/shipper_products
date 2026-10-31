@@ -1,0 +1,112 @@
+.trigger {
+  display: inline-flex;
+  height: var(--sh-control-h-sm);
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0 0.75rem;
+  border: 1px solid var(--sh-color-border);
+  border-radius: var(--sh-radius-sm);
+  background: var(--sh-color-white);
+  color: var(--sh-color-ink);
+  font-size: var(--sh-font-size-base);
+  font-weight: var(--sh-font-weight-medium);
+  white-space: nowrap;
+  transition:
+    border-color var(--sh-transition),
+    box-shadow var(--sh-transition);
+ 
+  &:hover,
+  &.open {
+    border-color: var(--sh-color-primary);
+  }
+ 
+  &.open {
+    box-shadow: var(--sh-focus-ring);
+  }
+ 
+  i {
+    color: var(--sh-color-muted);
+    font-size: var(--sh-font-size-xs);
+  }
+}
+ 
+.prefix {
+  color: var(--sh-color-muted);
+}
+ 
+.panel {
+  width: 17rem;
+  padding: 0;
+}
+ 
+.presets {
+  padding: 0.375rem;
+}
+ 
+.preset {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.625rem;
+  border: 0;
+  border-radius: var(--sh-radius-sm);
+  background: transparent;
+  color: var(--sh-color-ink);
+  font-size: var(--sh-font-size-base);
+  text-align: left;
+ 
+  &:hover {
+    background: var(--sh-color-surface);
+  }
+ 
+  i {
+    color: var(--sh-color-primary);
+    font-weight: var(--sh-font-weight-bold);
+  }
+}
+ 
+.selected {
+  color: var(--sh-color-primary);
+  font-weight: var(--sh-font-weight-semibold);
+}
+ 
+.custom {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  padding: 0.75rem;
+  border-top: 1px solid var(--sh-color-border);
+}
+ 
+.customTitle {
+  margin: 0;
+  color: var(--sh-color-muted);
+  font-size: var(--sh-font-size-xs);
+  font-weight: var(--sh-font-weight-semibold);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+ 
+.customFields {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.5rem;
+}
+ 
+.customField {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 0.25rem;
+  color: var(--sh-color-ink);
+  font-size: var(--sh-font-size-xs);
+  font-weight: var(--sh-font-weight-medium);
+}
+ 
+.error {
+  margin: 0;
+  color: var(--sh-color-danger);
+  font-size: var(--sh-font-size-xs);
+}

@@ -1,3 +1,11 @@
-export default function Spinner({ size = 20 }) {
-  return <div style={{ width: size, height: size, border: '2px solid #e2e8f0', borderTopColor: '#0f172a', borderRadius: '50%', animation: 'spin 0.8s linear infinite' }} />;
+import clsx from 'clsx'
+import styles from './Spinner.module.scss'
+/** Loading indicator. Use `decorative` when surrounding text already announces the busy state. */
+export default function Spinner({ size = 'md', label = 'Loading', decorative = false, className }) {
+  return (
+    <span
+      className={clsx(styles.spinner, styles[size], className)}
+      {...(decorative ? { 'aria-hidden': true } : { role: 'status', 'aria-label': label })}
+    />
+  )
 }

@@ -1,0 +1,50 @@
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    border-radius: var(--sh-radius-sm);
+    font-weight: var(--sh-font-weight-semibold);
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.pill {
+    border-radius: var(--sh-radius-pill);
+}
+
+.sm {
+    height: 18px;
+    padding: 0 0.375rem;
+    font-size: var(--sh-font-size-2xs);
+}
+
+.md {
+    height: 22px;
+    padding: 0 0.5rem;
+    font-size: var(--sh-font-size-xs);
+}
+
+.neutral {
+    background: var(--sh-color-surface);
+    color: var(--sh-color-muted);
+}
+
+.info {
+    background: var(--sh-color-primary-tint);
+    color: var(--sh-color-primary);
+}
+
+.success {
+    background: var(--sh-color-success-tint);
+    color: var(--sh-color-success);
+}
+
+.warning {
+    background: var(--sh-color-warning-tint);
+    color: var(--sh-color-warning);
+}
+
+.danger {
+    background: var(--sh-color-danger-tint);
+    color: var(--sh-color-danger);
+}

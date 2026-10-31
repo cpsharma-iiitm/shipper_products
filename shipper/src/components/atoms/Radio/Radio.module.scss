@@ -1,0 +1,46 @@
+.root {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+.control {
+    flex: none;
+    width: 16px;
+    height: 16px;
+    margin: 0.125rem 0 0;
+    border: 1.5px solid color-mix(in srgb, var(--sh-color-muted) 55%, white);
+    border-radius: 50%;
+    background: var(--sh-color-white);
+    cursor: pointer;
+    appearance: none;
+    transition:
+        background-color var(--sh-transition),
+        border-color var(--sh-transition);
+
+    &:hover:not(:disabled) {
+        border-color: var(--sh-color-primary);
+    }
+
+    &:checked {
+        border-color: var(--sh-color-primary);
+        background: var(--sh-color-primary);
+        box-shadow: inset 0 0 0 3px var(--sh-color-white);
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.55;
+    }
+}
+
+.label {
+    color: var(--sh-color-ink);
+    font-size: var(--sh-font-size-base);
+    line-height: 1.4;
+    cursor: pointer;
+}
+
+.hint {
+    color: var(--sh-color-muted);
+}

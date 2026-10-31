@@ -1,0 +1,36 @@
+.rating {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: var(--sh-font-size-sm);
+}
+
+.stars {
+    display: inline-flex;
+    gap: 0.125rem;
+}
+
+.primary .stars {
+    color: var(--sh-color-primary);
+}
+
+.warning .stars {
+    color: var(--sh-color-warning);
+}
+
+.sm .stars {
+    font-size: var(--sh-font-size-xs);
+}
+
+.md .stars {
+    font-size: var(--sh-font-size-base);
+}
+
+.value {
+    color: var(--sh-color-ink);
+    font-weight: var(--sh-font-weight-semibold);
+}
+
+.count {
+    color: var(--sh-color-muted);
+}

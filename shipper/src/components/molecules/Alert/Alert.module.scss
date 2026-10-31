@@ -1,0 +1,68 @@
+.alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid;
+    border-radius: var(--sh-radius-md);
+    font-size: var(--sh-font-size-base);
+    line-height: 1.45;
+}
+
+.icon {
+    flex: none;
+    margin-top: 0.125rem;
+}
+
+.body {
+    min-width: 0;
+    flex: 1;
+}
+
+.title,
+.message {
+    margin: 0;
+}
+
+.title {
+    font-weight: var(--sh-font-weight-semibold);
+}
+
+.message {
+    color: var(--sh-color-ink);
+}
+
+.title+.message {
+    margin-top: 0.125rem;
+}
+
+.action {
+    flex: none;
+    align-self: center;
+}
+
+@mixin tone($color, $tint) {
+    border-color: color-mix(in srgb, #{$color} 22%, transparent);
+    background: $tint;
+
+    .icon,
+    .title {
+        color: $color;
+    }
+}
+
+.info {
+    @include tone(var(--sh-color-primary), var(--sh-color-primary-tint));
+}
+
+.success {
+    @include tone(var(--sh-color-success), var(--sh-color-success-tint));
+}
+
+.warning {
+    @include tone(var(--sh-color-warning), var(--sh-color-warning-tint));
+}
+
+.danger {
+    @include tone(var(--sh-color-danger), var(--sh-color-danger-tint));
+}

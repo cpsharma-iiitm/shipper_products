@@ -1,3 +1,24 @@
-export default function ErrorState({ message = 'Something went wrong' }) {
-  return <div style={{ color: '#b91c1c', background: '#fef2f2', borderRadius: 12, padding: '0.8rem 1rem' }}>{message}</div>;
+import Button from '@/components/atoms/Button'
+import EmptyState from '@/components/molecules/EmptyState'
+/**
+* Failed-request panel with an optional retry. Pass a user-safe `message` (getErrorMessage(error)
+* from @/app/services); raw error objects and stack traces are never shown.
+*/
+export default function ErrorState({ title = 'Something went wrong', message, onRetry, compact = false, className }) {
+  return (
+    <EmptyState
+      icon="exclamation-triangle"
+      title={title}
+      description={message}
+      compact={compact}
+      className={className}
+      action={
+        onRetry && (
+          <Button variant="secondary" leftIcon="arrow-clockwise" onClick={onRetry}>
+            Try again
+          </Button>
+        )
+      }
+    />
+  )
 }

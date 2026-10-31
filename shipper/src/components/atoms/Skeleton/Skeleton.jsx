@@ -1,5 +1,12 @@
-export default function Skeleton({ width = '100%', height = 18, borderRadius = 8 }) {
+import clsx from 'clsx'
+import styles from './Skeleton.module.scss'
+/** Placeholder block shown while content loads. Always decorative; the container announces loading. */
+export default function Skeleton({ width = '100%', height = '1rem', radius, className, style }) {
   return (
-    <div style={{ width, height, borderRadius, background: 'linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%)', backgroundSize: '200% 100%', animation: 'pulse 1.2s ease-in-out infinite' }} />
-  );
+    <span
+      aria-hidden="true"
+      className={clsx(styles.skeleton, className)}
+      style={{ width, height, borderRadius: radius, ...style }}
+    />
+  )
 }

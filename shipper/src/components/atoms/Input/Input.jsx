@@ -1,15 +1,35 @@
-export default function Input({ label, name, value, onChange, placeholder, type = 'text', style = {} }) {
+import clsx from 'clsx'
+import Icon from '@/components/atoms/Icon'
+import styles from './Input.module.scss'
+/**
+* Text input. size: sm | md | lg (forms use lg) variant: outline | filled
+* Pass `invalid` for the error state. `ref` reaches the <input> (React Hook Form's register works).
+*/
+export default function Input({
+  ref,
+  size = 'lg',
+  variant = 'outline',
+  invalid = false,
+  leftIcon,
+  rightSlot,
+  type = 'text',
+  className,
+  wrapperClassName,
+  ...rest
+}) {
   return (
-    <label style={{ display: 'grid', gap: 6, fontSize: 14, color: '#334155', ...style }}>
-      {label ? <span>{label}</span> : null}
+    <div
+      className={clsx(styles.wrapper, styles[size], variant === 'filled' && styles.filled, invalid && styles.invalid, wrapperClassName)}
+    >
+      {leftIcon && <Icon name={leftIcon} className={styles.leftIcon} />}
       <input
+        ref={ref}
         type={type}
-        name={name}
-        value={value}
-        placeholder={placeholder}
-        onChange={onChange}
-        style={{ border: '1px solid #cbd5e1', borderRadius: 10, padding: '0.7rem 0.8rem', fontSize: 14 }}
+        className={clsx(styles.input, leftIcon && styles.hasLeftIcon, className)}
+        aria-invalid={invalid || undefined}
+        {...rest}
       />
-    </label>
-  );
+      {rightSlot && <span className={styles.rightSlot}>{rightSlot}</span>}
+    </div>
+  )
 }
