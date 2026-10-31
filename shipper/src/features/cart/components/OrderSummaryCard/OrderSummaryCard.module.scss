@@ -1,0 +1,31 @@
+.card {
+  transition: opacity var(--sh-transition);
+}
+
+// A newer quote is on its way: the figures on screen are still the previous ones.
+.busy {
+  opacity: 0.7;
+}
+
+.lines {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--sh-color-border);
+}
+
+.line {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--sh-color-muted);
+}
+
+.amount {
+  color: var(--sh-color-ink);
+  font-weight: var(--sh-font-weight-medium);
+  white-space: nowrap;
+}

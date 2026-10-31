@@ -1,0 +1,28 @@
+// Dividers between the item, adjustment and total groups, matching the cart and checkout artboards.
+.group {
+  margin-top: 0.875rem;
+  padding-top: 0.875rem;
+  border-top: 1px solid var(--sh-color-border);
+}
+
+.total {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 0.875rem;
+  padding-top: 0.875rem;
+  border-top: 1px solid var(--sh-color-border);
+}
+
+.totalLabel {
+  color: var(--sh-color-ink);
+  font-size: var(--sh-font-size-lg);
+}
+
+.totalValue {
+  color: var(--sh-color-navy);
+  font-size: var(--sh-font-size-2xl);
+  font-weight: var(--sh-font-weight-bold);
+  line-height: 1.2;
+}
