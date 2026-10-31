@@ -1,9 +1,8 @@
-import { httpRequest } from '../http';
-
-const adminModules = {
-  products: () => httpRequest('/api/admin/products'),
-  customers: () => httpRequest('/api/admin/customers'),
-  reports: () => httpRequest('/api/admin/reports'),
+export const adminModules = {
+  dashboard: '/admin/dashboard',
+  products: '/admin/products',
+  orders: '/admin/orders',
+  users: '/admin/users',
+  shipping: '/admin/shipping',
+  reports: '/admin/reports',
 };
-
-export default adminModules;
