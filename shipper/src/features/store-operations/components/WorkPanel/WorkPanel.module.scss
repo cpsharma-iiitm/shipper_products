@@ -1,0 +1,50 @@
+.panel {
+  min-width: 0;
+}
+
+.skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.section + .section {
+  margin-top: 1rem;
+}
+
+.divided {
+  padding-top: 1rem;
+  border-top: 1px solid var(--sh-color-border);
+}
+
+.sectionTitle {
+  margin: 0;
+  color: var(--sh-color-ink);
+  font-size: var(--sh-font-size-md);
+  font-weight: var(--sh-font-weight-regular);
+}
+
+.note {
+  margin: 0;
+  color: var(--sh-color-muted);
+  font-size: var(--sh-font-size-sm);
+  line-height: 1.5;
+}
+
+.success {
+  color: var(--sh-color-success);
+}
+
+.warning {
+  color: var(--sh-color-warning);
+}
+
+.danger {
+  color: var(--sh-color-danger);
+}

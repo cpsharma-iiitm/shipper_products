@@ -1,1 +1,1 @@
-export { default } from './DeliveryCheck';
+export { default } from './DeliveryCheck'
