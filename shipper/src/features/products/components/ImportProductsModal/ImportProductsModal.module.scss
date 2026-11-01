@@ -1,0 +1,77 @@
+.choose {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.5rem 1rem;
+  border: 1px dashed var(--sh-color-border);
+  border-radius: var(--sh-radius-md);
+  background: var(--sh-color-surface);
+  text-align: center;
+}
+
+.icon {
+  color: var(--sh-color-primary);
+  font-size: 2rem;
+}
+
+.lead {
+  margin: 0;
+  color: var(--sh-color-ink);
+  font-weight: var(--sh-font-weight-medium);
+}
+
+.help {
+  max-width: 34rem;
+  margin: 0;
+  color: var(--sh-color-muted);
+  font-size: var(--sh-font-size-sm);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.readError {
+  width: 100%;
+  max-width: 34rem;
+  text-align: left;
+}
+
+.preview,
+.result {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.fileSummary {
+  margin: 0;
+  color: var(--sh-color-muted);
+  font-size: var(--sh-font-size-sm);
+
+  strong {
+    color: var(--sh-color-ink);
+  }
+}
+
+.problem {
+  color: var(--sh-color-danger);
+  font-size: var(--sh-font-size-sm);
+}
+
+.chooseAnother {
+  margin-right: auto;
+}
+
+.rejected {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  margin: 0;
+  color: var(--sh-color-danger);
+  font-size: var(--sh-font-size-sm);
+}

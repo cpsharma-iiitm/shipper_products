@@ -1,0 +1,47 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+  color: var(--sh-color-muted);
+}
+
+.actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+// The card already frames the table, so the table drops its own border (the header band stays).
+.card .table {
+  border: 0;
+  border-radius: 0;
+}
+
+.card .table th {
+  padding: 0.5625rem 0.625rem;
+  font-size: var(--sh-font-size-2xs);
+  font-weight: var(--sh-font-weight-regular);
+}
+
+// Dense admin rows (design p-15): 12px text, 66px rows with the 40px thumbnail.
+.card .table td {
+  padding: 0.78125rem 0.625rem;
+  font-size: var(--sh-font-size-xs);
+  white-space: nowrap;
+}
+
+.thumb {
+  // A block wrapper: an inline thumbnail would add descender space under itself and make the row taller.
+  display: flex;
+}
+
+.lowStock {
+  color: var(--sh-color-danger);
+}
