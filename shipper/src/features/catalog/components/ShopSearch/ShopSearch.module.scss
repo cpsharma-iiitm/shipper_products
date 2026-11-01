@@ -1,0 +1,8 @@
+.row {
+  display: flex;
+  gap: 1.25rem;
+
+  > :first-child {
+    flex: 1;
+  }
+}
