@@ -1,8 +1,28 @@
-export default function PolicyDocument({ title = 'Policy', content = 'This policy applies to all customer and admin interactions.' }) {
+import styles from './PolicyDocument.module.scss'
+
+/** A policy as readable text: numbered sections of paragraphs and bullet points. */
+export default function PolicyDocument({ policy }) {
   return (
-    <article style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: 16, padding: '1.25rem' }}>
-      <h3 style={{ marginTop: 0 }}>{title}</h3>
-      <p style={{ color: '#475569', lineHeight: 1.7, margin: 0 }}>{content}</p>
+    <article className={styles.document}>
+      {policy.sections.map((section, index) => (
+        <section key={section.heading} className={styles.section} aria-labelledby={`policy-section-${index}`}>
+          <h2 id={`policy-section-${index}`} className={styles.heading}>
+            {section.heading}
+          </h2>
+          {section.paragraphs?.map((paragraph) => (
+            <p key={paragraph} className={styles.paragraph}>
+              {paragraph}
+            </p>
+          ))}
+          {section.points && (
+            <ul className={styles.points}>
+              {section.points.map((point) => (
+                <li key={point}>{point}</li>
+              ))}
+            </ul>
+          )}
+        </section>
+      ))}
     </article>
-  );
+  )
 }

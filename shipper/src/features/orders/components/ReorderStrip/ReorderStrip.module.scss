@@ -1,0 +1,16 @@
+.strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+  padding: 1.25rem;
+  border-radius: var(--sh-radius-lg);
+  background: var(--sh-color-surface);
+}
+
+.text {
+  margin: 0;
+  color: var(--sh-color-ink);
+  font-size: var(--sh-font-size-md);
+}
