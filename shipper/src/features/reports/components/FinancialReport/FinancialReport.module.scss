@@ -1,0 +1,52 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.crumb {
+  color: var(--sh-color-primary);
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.tableHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.selection {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 0.75rem;
+  margin: 0;
+  font-size: var(--sh-font-size-sm);
+}
+
+.selectedCount {
+  color: var(--sh-color-primary);
+  font-weight: var(--sh-font-weight-medium);
+}
+
+.selectionNote {
+  color: var(--sh-color-muted);
+}
+
+.tableActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+// The card is the frame; the table inside drops its own border (design: header band, hairline rows).
+.tableCard .table {
+  border: 0;
+  border-radius: 0;
+}

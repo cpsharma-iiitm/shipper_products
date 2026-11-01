@@ -1,0 +1,14 @@
+.twoLines {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.4;
+}
+
+.orderLink {
+  color: inherit;
+
+  &:hover {
+    color: var(--sh-color-primary);
+    text-decoration: underline;
+  }
+}

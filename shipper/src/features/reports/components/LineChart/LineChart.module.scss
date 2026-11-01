@@ -1,0 +1,176 @@
+// The last-period line is a lighter tint of the same blue, as in the design. Its contrast against white is
+// low by design, so every value is also in the tooltip, the keyboard readout and the hidden data table.
+.root {
+  --chart-current: var(--sh-color-primary);
+  --chart-previous: color-mix(in srgb, var(--sh-color-primary) 42%, var(--sh-color-white));
+}
+
+.legendRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.axisTitle {
+  margin: 0;
+  color: var(--sh-color-muted);
+  font-size: var(--sh-font-size-sm);
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  margin: 0;
+}
+
+.legendItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  color: var(--sh-color-primary);
+  font-size: var(--sh-font-size-xs);
+  font-weight: var(--sh-font-weight-medium);
+}
+
+.legendKey {
+  width: 0.625rem;
+  height: 0.625rem;
+  border: 2px solid var(--chart-current);
+  border-radius: 50%;
+  background: var(--chart-current);
+
+  &.previous {
+    border-color: var(--chart-previous);
+    background: var(--sh-color-white);
+  }
+}
+
+.chart {
+  position: relative;
+  width: 100%;
+  border-radius: var(--sh-radius-sm);
+  transition: opacity var(--sh-transition);
+
+  svg {
+    display: block;
+    overflow: visible;
+  }
+}
+
+// While the next report loads the chart keeps its shape and dims, instead of flashing a skeleton.
+.busy {
+  opacity: 0.55;
+}
+
+.grid {
+  stroke: var(--sh-color-border);
+  stroke-width: 1;
+}
+
+.tick {
+  fill: var(--sh-color-muted);
+  font-size: var(--sh-font-size-2xs);
+}
+
+.line {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  &.current {
+    stroke: var(--chart-current);
+    stroke-width: 2.5;
+  }
+
+  &.previous {
+    stroke: var(--chart-previous);
+    stroke-width: 2;
+  }
+}
+
+.crosshair {
+  stroke: var(--sh-color-muted);
+  stroke-opacity: 0.45;
+  stroke-width: 1;
+}
+
+.marker {
+  stroke: var(--sh-color-white);
+  stroke-width: 2;
+
+  &.current {
+    fill: var(--chart-current);
+  }
+
+  &.previous {
+    fill: var(--chart-previous);
+  }
+}
+
+.hit {
+  fill: transparent;
+  cursor: crosshair;
+}
+
+.tooltip {
+  position: absolute;
+  top: 0.25rem;
+  z-index: 2;
+  min-width: 11rem;
+  padding: 0.625rem 0.75rem;
+  transform: translateX(0.75rem);
+  border: 1px solid var(--sh-color-border);
+  border-radius: var(--sh-radius-md);
+  background: var(--sh-color-white);
+  box-shadow: var(--sh-shadow-md);
+  pointer-events: none;
+}
+
+.tooltipLeft {
+  transform: translateX(calc(-100% - 0.75rem));
+}
+
+.tooltipTitle {
+  margin: 0 0 0.375rem;
+  color: var(--sh-color-muted);
+  font-size: var(--sh-font-size-xs);
+  font-weight: var(--sh-font-weight-medium);
+}
+
+.tooltipRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  font-size: var(--sh-font-size-xs);
+
+  & + & {
+    margin-top: 0.25rem;
+  }
+}
+
+.tooltipKey {
+  width: 0.875rem;
+  height: 0.125rem;
+  flex: none;
+  border-radius: 1px;
+  background: var(--chart-current);
+
+  &.previous {
+    background: var(--chart-previous);
+  }
+}
+
+.tooltipValue {
+  color: var(--sh-color-ink);
+  font-size: var(--sh-font-size-base);
+  font-weight: var(--sh-font-weight-semibold);
+}
+
+.tooltipSeries {
+  color: var(--sh-color-muted);
+}
