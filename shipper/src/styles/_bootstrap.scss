@@ -1,0 +1,50 @@
+@use 'tokens' as t;
+
+// Bootstrap, grid and utilities only: no Reboot, no component CSS, no Bootstrap JavaScript.
+// Configuration must be declared before the Bootstrap partials are imported.
+
+$enable-dark-mode: false;
+$enable-shadows: false;
+$enable-gradients: false;
+$enable-negative-margins: false;
+$enable-cssgrid: false;
+
+$grid-breakpoints: t.$breakpoints;
+$grid-gutter-width: 1.25rem; // 20px — matches the product grid gap in the design
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1200px,
+  xxl: 1312px,
+);
+
+// Map Bootstrap's theme colours onto the Shipper palette so utilities such as .text-primary,
+// .bg-light and .border resolve to design values.
+$primary: t.$color-primary;
+$secondary: t.$color-muted;
+$success: t.$color-success;
+$info: t.$color-primary;
+$warning: t.$color-warning;
+$danger: t.$color-danger;
+$light: t.$color-surface;
+$dark: t.$color-navy;
+
+$body-color: t.$color-ink;
+$body-bg: t.$color-white;
+$border-color: t.$color-border;
+$font-family-sans-serif: t.$font-family-sans;
+$font-size-base: 0.875rem;
+
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/variables-dark';
+@import 'bootstrap/scss/maps';
+@import 'bootstrap/scss/mixins';
+@import 'bootstrap/scss/utilities';
+@import 'bootstrap/scss/root';
+@import 'bootstrap/scss/containers';
+@import 'bootstrap/scss/grid';
+@import 'bootstrap/scss/helpers/visually-hidden';
+@import 'bootstrap/scss/helpers/stretched-link';
+@import 'bootstrap/scss/utilities/api';

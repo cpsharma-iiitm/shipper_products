@@ -1,8 +1,11 @@
+import { AccountShell } from '@/features/profile'
+import { WalletBalanceCard, WalletTransactions } from '@/features/wallet'
+
 export default function WalletPage() {
   return (
-    <section>
-      <h2>Wallet</h2>
-      <p>Wallet balance, credits, transactions, and payout state.</p>
-    </section>
-  );
+    <AccountShell title="Wallet & rewards" description="Your Shipper balance and everything that has moved it.">
+      <WalletBalanceCard />
+      <WalletTransactions />
+    </AccountShell>
+  )
 }

@@ -1,0 +1,121 @@
+@use 'mixins' as *;
+
+// Minimal reset and global defaults. Bootstrap's Reboot is intentionally not used.
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--sh-color-white);
+  color: var(--sh-color-ink);
+  font-family: var(--sh-font-sans);
+  font-size: var(--sh-font-size-base);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+blockquote {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--sh-color-navy);
+  font-weight: var(--sh-font-weight-semibold);
+  line-height: 1.25;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  margin: 0;
+  color: inherit;
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled,
+[aria-disabled='true'] {
+  cursor: not-allowed;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+// Visible keyboard focus everywhere; pointer clicks do not show the ring.
+:focus-visible {
+  @include focus-ring;
+}
+
+// Page gutter used by storefront sections (content is 1312px wide inside a 1440px viewport).
+.sh-container {
+  width: 100%;
+  max-width: var(--sh-container-max);
+  margin-inline: auto;
+  padding-inline: var(--sh-gutter-mobile);
+
+  @include up('md') {
+    padding-inline: var(--sh-gutter-tablet);
+  }
+
+  @include up('xl') {
+    padding-inline: var(--sh-gutter-desktop);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

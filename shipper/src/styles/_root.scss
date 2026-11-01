@@ -1,0 +1,69 @@
+@use 'sass:map';
+@use 'tokens' as t;
+
+// Publishes the Sass tokens as CSS custom properties (--sh-*). Component styles read these at
+// runtime instead of importing Sass values, so a theme change never needs a component edit.
+:root {
+  // Colour
+  --sh-color-navy: #{t.$color-navy};
+  --sh-color-ink: #{t.$color-ink};
+  --sh-color-muted: #{t.$color-muted};
+  --sh-color-primary: #{t.$color-primary};
+  --sh-color-primary-hover: #{t.$color-primary-hover};
+  --sh-color-primary-tint: #{t.$color-primary-tint};
+  --sh-color-hero-tint: #{t.$color-hero-tint};
+  --sh-color-sand: #{t.$color-sand};
+  --sh-color-surface: #{t.$color-surface};
+  --sh-color-border: #{t.$color-border};
+  --sh-color-white: #{t.$color-white};
+  --sh-color-footer-link: #{t.$color-footer-link};
+  --sh-color-success: #{t.$color-success};
+  --sh-color-success-tint: #{t.$color-success-tint};
+  --sh-color-warning: #{t.$color-warning};
+  --sh-color-warning-tint: #{t.$color-warning-tint};
+  --sh-color-danger: #{t.$color-danger};
+  --sh-color-danger-tint: #{t.$color-danger-tint};
+  --sh-color-scrim: #{t.$color-scrim};
+
+  // Typography
+  --sh-font-sans: #{t.$font-family-sans};
+  @each $name, $size in t.$font-sizes {
+    --sh-font-size-#{$name}: #{$size};
+  }
+  @each $name, $weight in t.$font-weights {
+    --sh-font-weight-#{$name}: #{$weight};
+  }
+
+  // Shape and elevation
+  @each $name, $radius in t.$radii {
+    --sh-radius-#{$name}: #{$radius};
+  }
+  @each $name, $shadow in t.$shadows {
+    --sh-shadow-#{$name}: #{$shadow};
+  }
+  --sh-focus-ring: #{t.$focus-ring};
+
+  // Layout
+  @each $name, $value in t.$layout {
+    --sh-#{$name}: #{$value};
+  }
+
+  // Stacking
+  @each $name, $value in t.$z-index {
+    --sh-z-#{$name}: #{$value};
+  }
+
+  --sh-transition: #{t.$transition};
+}
+
+// The admin dashboard is denser than the storefront in the Figma design (design pages p-13..p-24): body copy, tables,
+// panels and controls read at 12px, table headers and small captions at 10px, and headline figures at 22px. Re-pointing the type tokens here
+// keeps every admin component on the shared scale instead of hard-coding sizes in each one. AdminLayout sets
+// data-area="admin" on <html> so modals and drawers rendered through portals follow suit.
+:root[data-area='admin'] {
+  --sh-font-size-2xs: 0.625rem; // 10px
+  --sh-font-size-sm: 0.75rem; // 12px
+  --sh-font-size-base: 0.75rem; // 12px
+  --sh-font-size-xl: 1.375rem; // 22px
+  --sh-control-font-size: var(--sh-font-size-sm);
+}

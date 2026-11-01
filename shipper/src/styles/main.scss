@@ -1,0 +1,6 @@
+// Global stylesheet entry. Component styles live beside their components as *.module.scss and
+// import mixins with: @use '@/styles/mixins' as *;
+@use 'root';
+@use 'bootstrap';
+@use 'base';
+@use 'vendor';

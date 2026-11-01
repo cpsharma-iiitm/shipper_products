@@ -1,0 +1,130 @@
+// Design tokens — single source of truth for the storefront and the admin dashboard.
+//
+// Colours were sampled from the Figma export (design/shipper-figma.pdf). Radii, shadows, the type
+// scale and layout measures were measured or estimated from the artboards and may be refined
+// per component. Plain Sass values live here; _root.scss publishes them as CSS custom properties
+// (--sh-*) which components consume at runtime.
+
+// ── Brand and neutrals ──────────────────────────────────────────────────────────────────────────
+$color-navy: #102b50; // announcement bar, footer, display headings
+$color-ink: #172b44; // body text, table values, KPI values
+$color-muted: #64748b; // secondary text, labels, inactive navigation
+$color-primary: #1558d6; // primary actions, links, active states
+$color-primary-hover: #114bb3; // DERIVED (not in the design): hover/pressed state of primary
+$color-primary-tint: #edf4ff; // selected rows, active nav pill, info badge, newsletter band
+$color-hero-tint: #eaf1f7; // storefront hero background
+$color-sand: #f5f0e9; // warm promo and editorial cards
+$color-surface: #f5f7fb; // admin page background, filter panel, table header, search field
+$color-border: #e3e9f1;
+$color-white: #ffffff;
+$color-footer-link: #d9e4f1;
+
+// ── Status ──────────────────────────────────────────────────────────────────────────────────────
+$color-success: #16724d;
+$color-success-tint: #eaf7f0;
+$color-warning: #9b620b;
+$color-warning-tint: #fff5df;
+$color-danger: #c13e43;
+$color-danger-tint: #fff0f0;
+
+// ── Overlay ─────────────────────────────────────────────────────────────────────────────────────
+$color-scrim: rgba(16, 43, 80, 0.44); // modal and drawer backdrop (navy at 44%)
+
+// ── Typography ──────────────────────────────────────────────────────────────────────────────────
+$font-family-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+  sans-serif;
+
+$font-sizes: (
+  '2xs': 0.6875rem,
+  // 11px
+  'xs': 0.75rem,
+  // 12px — captions, badges, helper text
+  'sm': 0.8125rem,
+  // 13px
+  'base': 0.875rem,
+  // 14px — body copy, tables, form controls
+  'md': 1rem,
+  // 16px — product titles
+  'lg': 1.125rem,
+  // 18px
+  'xl': 1.25rem,
+  // 20px
+  '2xl': 1.5rem,
+  // 24px — admin page titles
+  '3xl': 1.75rem,
+  // 28px — storefront section titles
+  '4xl': 2.25rem,
+  // 36px
+  'display': 4rem,
+  // 64px — storefront hero (smaller on mobile)
+);
+
+$font-weights: (
+  'regular': 400,
+  'medium': 500,
+  'semibold': 600,
+  'bold': 700,
+);
+
+// ── Shape and elevation ─────────────────────────────────────────────────────────────────────────
+$radii: (
+  'xs': 4px,
+  'sm': 6px,
+  // buttons, inputs, pagination, badges
+  'md': 8px,
+  // admin cards, tables
+  'lg': 12px,
+  // storefront product cards, promo cards
+  'xl': 16px,
+  // modals, hero imagery
+  'pill': 999px,
+);
+
+$shadows: (
+  'sm': 0 1px 2px rgba(16, 43, 80, 0.06),
+  'md': 0 4px 12px rgba(16, 43, 80, 0.08),
+  'lg': 0 16px 40px rgba(16, 43, 80, 0.18),
+);
+
+$focus-ring: 0 0 0 3px rgba(21, 88, 214, 0.35);
+
+// ── Layout (measured at the 1440px and 390px artboards) ────────────────────────────────────────
+$breakpoints: (
+  'xs': 0,
+  'sm': 576px,
+  'md': 768px,
+  'lg': 1024px,
+  'xl': 1280px,
+  'xxl': 1440px,
+);
+
+$layout: (
+  'container-max': 1440px,
+  'gutter-mobile': 18px,
+  'gutter-tablet': 32px,
+  'gutter-desktop': 64px,
+  'announcement-h': 30px,
+  'header-h': 92px,
+  'category-nav-h': 48px,
+  'admin-sidebar-w': 224px,
+  'admin-sidebar-w-collapsed': 76px,
+  'admin-header-h': 66px,
+  'admin-content-padding': 20px,
+  'modal-w': 900px,
+  'drawer-w': 440px,
+  'control-h-sm': 34px,
+  'control-h-md': 40px,
+  'control-h-lg': 44px,
+);
+
+// ── Stacking ────────────────────────────────────────────────────────────────────────────────────
+$z-index: (
+  'dropdown': 1000,
+  'sticky': 1020,
+  'drawer': 1040,
+  'modal': 1050,
+  'popover': 1100,
+  'toast': 1200,
+);
+
+$transition: 160ms ease;
