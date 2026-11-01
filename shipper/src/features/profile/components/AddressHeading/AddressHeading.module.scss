@@ -1,0 +1,12 @@
+.heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+}
+
+.label {
+  margin: 0;
+  color: var(--sh-color-navy);
+  font-size: var(--sh-font-size-md);
+}

@@ -1,1 +1,1 @@
-export { default } from './AccountNav';
+export { default } from './AccountNav'
