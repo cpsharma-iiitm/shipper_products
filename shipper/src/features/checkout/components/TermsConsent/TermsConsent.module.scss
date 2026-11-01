@@ -1,0 +1,27 @@
+.terms {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+
+  // Fine print, as in the design: smaller and quieter than a form label.
+  label {
+    color: var(--sh-color-muted);
+    font-size: var(--sh-font-size-xs);
+
+    // Links read as part of the sentence: same colour, underlined.
+    a {
+      color: inherit;
+      text-decoration: underline;
+    }
+
+    a:hover {
+      color: var(--sh-color-ink);
+    }
+  }
+}
+
+.error {
+  margin: 0;
+  color: var(--sh-color-danger);
+  font-size: var(--sh-font-size-xs);
+}
