@@ -1,1 +1,1 @@
-export { default } from './StoreOperationWorkspace';
+export { default } from './StoreOperationWorkspace'

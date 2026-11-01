@@ -1,0 +1,36 @@
+// The design stretches the six tabs across the bar and shows each count as plain text beside the label.
+// Tabs already provides the pill look; this only spreads it and tones the count down. The selectors use
+// ARIA roles because those are the stable contract of the shared component.
+.root {
+  > div {
+    border-radius: var(--sh-radius-lg);
+  }
+
+  [role='tablist'] {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(max-content, 1fr));
+  }
+
+  button[role='tab'] {
+    height: 40px;
+    justify-content: center;
+    border-radius: var(--sh-radius-md);
+    font-size: var(--sh-font-size-xs);
+    font-weight: var(--sh-font-weight-semibold);
+
+    span {
+      min-width: 0;
+      height: auto;
+      padding: 0;
+      background: transparent;
+      color: var(--sh-color-muted);
+      font-size: var(--sh-font-size-2xs);
+      font-weight: var(--sh-font-weight-medium);
+    }
+  }
+
+  button[role='tab'][aria-selected='true'] span {
+    background: transparent;
+    color: var(--sh-color-white);
+  }
+}

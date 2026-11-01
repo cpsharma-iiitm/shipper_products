@@ -1,15 +1,43 @@
-export default function StoreOperationWorkspace({ stages = [] }) {
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import PageHeader from '@/components/molecules/PageHeader'
+import { TabPanel } from '@/components/molecules/Tabs'
+import { paths } from '@/app/router/paths'
+import { pluralize } from '@/lib/format'
+import { HeaderActionsProvider } from '@/features/store-operations/components/HeaderActions'
+import StageTabs from '@/features/store-operations/components/StageTabs'
+import { useStageCounts } from '@/features/store-operations/hooks/useStoreOperations'
+import { STAGE_VIEWS } from './stageViews'
+import styles from './StoreOperationWorkspace.module.scss'
+
+const TABS_ID = 'store-operation'
+
+function describe(stage, counts) {
+  if (stage.stage !== 'delayed' || !counts) return stage.description
+  return `${stage.description} ${pluralize(counts.delayed, 'order')} need${counts.delayed === 1 ? 's' : ''} attention · ${counts.delayedBeyondSla} beyond SLA.`
+}
+
+/** Header, stage tabs and the view of the selected stage. The tabs stay mounted while the stage changes. */
+export default function StoreOperationWorkspace({ stage }) {
+  const navigate = useNavigate()
+  const counts = useStageCounts()
+  const [actionsSlot, setActionsSlot] = useState(null)
+  const StageView = STAGE_VIEWS[stage.key]
+
   return (
-    <section>
-      <h2>Operations workspace</h2>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 16 }}>
-        {stages.map((stage) => (
-          <div key={stage.name} style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: 14, padding: '1rem' }}>
-            <div style={{ fontWeight: 700 }}>{stage.name}</div>
-            <div style={{ color: '#64748b', marginTop: 6 }}>{stage.count || 0} items</div>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
+    <div className={styles.workspace}>
+      <PageHeader
+        className={styles.header}
+        title={stage.title}
+        description={describe(stage, counts.data)}
+        actions={<div ref={setActionsSlot} className={styles.actions} />}
+      />
+      <StageTabs id={TABS_ID} value={stage.key} counts={counts.data} onChange={(key) => navigate(paths.admin.storeTab(key))} />
+      <TabPanel id={TABS_ID} tabKey={stage.key} value={stage.key} className={styles.stage}>
+        <HeaderActionsProvider value={actionsSlot}>
+          <StageView />
+        </HeaderActionsProvider>
+      </TabPanel>
+    </div>
+  )
 }
