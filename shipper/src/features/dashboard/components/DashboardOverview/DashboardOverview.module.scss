@@ -1,0 +1,27 @@
+@use '@/styles/mixins' as m;
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8125rem;
+}
+
+.panels {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.8125rem 1rem;
+
+  @include m.up('xl') {
+    grid-template-columns: minmax(0, 1fr) 20rem;
+    align-items: start;
+  }
+}
+
+// Shortcuts to the most common admin tasks, level with the period selector.
+.quickActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem 0.75rem;
+}

@@ -1,0 +1,19 @@
+.orderLink {
+  color: var(--sh-color-ink);
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.amount {
+  font-weight: var(--sh-font-weight-semibold);
+}
+
+.credit {
+  color: var(--sh-color-success);
+}
+
+.debit {
+  color: var(--sh-color-danger);
+}

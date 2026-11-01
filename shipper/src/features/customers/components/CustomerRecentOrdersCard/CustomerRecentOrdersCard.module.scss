@@ -1,0 +1,22 @@
+.orderLink {
+  color: var(--sh-color-ink);
+  font-weight: var(--sh-font-weight-semibold);
+
+  &:hover {
+    color: var(--sh-color-primary);
+    text-decoration: underline;
+  }
+}
+
+.allLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--sh-color-primary);
+  font-size: var(--sh-font-size-sm);
+  font-weight: var(--sh-font-weight-medium);
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

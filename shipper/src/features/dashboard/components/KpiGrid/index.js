@@ -1,1 +1,1 @@
-export { default } from './KpiGrid';
+export { default } from './KpiGrid'

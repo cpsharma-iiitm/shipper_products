@@ -1,0 +1,35 @@
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.addresses {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.address {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem 0;
+  border-top: 1px solid var(--sh-color-border);
+
+  &:first-child {
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+}
+
+.badges {
+  display: flex;
+  gap: 0.375rem;
+}
