@@ -1,10 +1,19 @@
-export const adminUsers = [
-  { id: 'U-1', name: 'Neha', role: 'Operations' },
-  { id: 'U-2', name: 'Pranav', role: 'Finance' },
-  { id: 'U-3', name: 'Sonia', role: 'Support' },
-];
+// DEV FIXTURES: demo accounts for the mock API. Passwords here are for the fake backend only.
+export const DEMO_PASSWORD = 'Shipper@123'
 
-export const users = [
-  { id: 'USR-01', name: 'Neha', email: 'neha@shipper.com', role: 'admin' },
-  { id: 'USR-02', name: 'Pranav', email: 'pranav@shipper.com', role: 'support' },
-];
+export const demoUsers = [
+  {
+    id: 'cus_aditi',
+    name: 'Aditi Sharma',
+    email: 'aditi.sharma@gmail.com',
+    mobile: '9876543210',
+    role: 'customer',
+  },
+  {
+    id: 'adm_pawan',
+    name: 'Pawan Yadav',
+    email: 'pawan.yadav@shipper.com',
+    mobile: '9811122334',
+    role: 'admin',
+  },
+]
