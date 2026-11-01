@@ -1,0 +1,147 @@
+@use '@/styles/mixins' as m;
+
+.card {
+  border: 1px solid var(--sh-color-border);
+  border-radius: var(--sh-radius-lg);
+  background: var(--sh-color-white);
+}
+
+.header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    'number status'
+    'meta meta'
+    'invoice invoice';
+  align-items: center;
+  gap: 0.25rem 1rem;
+  margin: 0 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--sh-color-border);
+
+  @include m.up('md') {
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    grid-template-areas:
+      'number invoice status'
+      'meta meta meta';
+    gap: 0.25rem 1.25rem;
+    margin: 0 1.5rem;
+    padding: 1.5rem 0 0.875rem;
+  }
+}
+
+.number {
+  grid-area: number;
+  margin: 0;
+  color: var(--sh-color-navy);
+  font-size: var(--sh-font-size-md);
+  font-weight: var(--sh-font-weight-medium);
+
+  @include m.up('md') {
+    font-size: var(--sh-font-size-lg);
+  }
+}
+
+.meta {
+  grid-area: meta;
+  margin: 0;
+  color: var(--sh-color-muted);
+  font-size: var(--sh-font-size-sm);
+}
+
+.invoice {
+  grid-area: invoice;
+  justify-self: start;
+  margin-top: 0.5rem;
+
+  @include m.up('md') {
+    justify-self: end;
+    margin-top: 0;
+  }
+}
+
+.status {
+  grid-area: status;
+  justify-self: end;
+}
+
+.body {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+
+  @include m.up('md') {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0.875rem 1.5rem 1.5rem;
+  }
+}
+
+.thumbnails {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+// Block-level items so the inline-flex thumbnails leave no line-height gap under them.
+.thumbnails > li {
+  display: flex;
+}
+
+.more {
+  display: inline-flex;
+  width: 3rem;
+  height: 3rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--sh-color-surface);
+  color: var(--sh-color-muted);
+  font-size: var(--sh-font-size-sm);
+  font-weight: var(--sh-font-weight-semibold);
+}
+
+.summary {
+  min-width: 0;
+}
+
+.items {
+  margin: 0;
+  color: var(--sh-color-ink);
+  font-size: var(--sh-font-size-base);
+}
+
+.note {
+  margin: 0.625rem 0 0;
+  font-size: var(--sh-font-size-sm);
+}
+
+.success {
+  color: var(--sh-color-success);
+}
+
+.danger {
+  color: var(--sh-color-danger);
+}
+
+.muted {
+  color: var(--sh-color-muted);
+}
+
+// Buttons stack and share the left edge of the widest one, as in the design; on phones they sit in a row.
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.625rem;
+
+  @include m.up('md') {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+  }
+}

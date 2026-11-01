@@ -1,0 +1,60 @@
+@use '@/styles/mixins' as m;
+
+// Phones: one column in reading order. The two column wrappers dissolve so each card can take its own position.
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.side,
+.main {
+  display: contents;
+}
+
+.track {
+  order: 1;
+}
+
+.parcel {
+  order: 2;
+}
+
+.pair {
+  order: 3;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.reorder {
+  order: 4;
+}
+
+.support {
+  order: 5;
+}
+
+@include m.up('lg') {
+  .layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    align-items: start;
+    gap: 1.875rem;
+
+    > :first-child {
+      grid-column: 1 / -1;
+    }
+  }
+
+  .side,
+  .main {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .pair {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+}
