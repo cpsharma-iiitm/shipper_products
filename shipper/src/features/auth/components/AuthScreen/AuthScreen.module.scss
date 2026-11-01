@@ -1,0 +1,39 @@
+@use '@/styles/mixins' as m;
+
+.screen {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-block: 1.25rem 3rem;
+
+  @include m.up('lg') {
+    gap: 1.75rem;
+    padding-block: 2.25rem 4rem;
+  }
+}
+
+.panels {
+  display: grid;
+  align-items: start;
+  gap: 1.5rem;
+
+  @include m.up('lg') {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.75rem;
+  }
+}
+
+.switch {
+  margin: 0;
+  color: var(--sh-color-muted);
+  text-align: center;
+
+  a {
+    color: var(--sh-color-primary);
+    font-weight: var(--sh-font-weight-medium);
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+}

@@ -36,6 +36,7 @@ export default function CartLineItem({ line, quantity, onQuantityChange, onSaveF
           {line.unit} · {line.productCode}
         </p>
         <StockBadge line={line} quantity={quantity} />
+
         <div className={styles.actions}>
           <Button variant="link" size="sm" onClick={onSaveForLater}>
             Save for later
@@ -54,6 +55,7 @@ export default function CartLineItem({ line, quantity, onQuantityChange, onSaveF
           </p>
           <p className={styles.each}>{formatINR(line.unitPrice)} each</p>
         </div>
+
         <QuantityStepper
           value={quantity}
           onChange={onQuantityChange}
