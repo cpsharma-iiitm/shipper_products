@@ -1,0 +1,88 @@
+@use '@/styles/mixins' as m;
+
+.screen {
+  padding-block: 1.25rem 3rem;
+
+  @include m.up('lg') {
+    padding-block: 2.25rem 4rem;
+  }
+}
+
+.status {
+  display: flex;
+  min-height: 50vh;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  color: var(--sh-color-muted);
+}
+
+.back {
+  margin-bottom: 1rem;
+}
+
+.header {
+  margin-block: 1.25rem 1.25rem;
+
+  @include m.up('lg') {
+    margin-block: 1.75rem 1.75rem;
+  }
+}
+
+.title {
+  color: var(--sh-color-navy);
+  font-size: var(--sh-font-size-3xl);
+  font-weight: var(--sh-font-weight-bold);
+}
+
+.subtitle {
+  margin: 0.375rem 0 0;
+  color: var(--sh-color-muted);
+  font-size: var(--sh-font-size-sm);
+}
+
+.layout {
+  display: grid;
+  margin-top: 1.25rem;
+  gap: 1.5rem;
+
+  @include m.up('lg') {
+    grid-template-columns: minmax(0, 1fr) 380px;
+    align-items: start;
+    gap: 2rem;
+  }
+}
+
+.main,
+.aside {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.aside {
+  position: sticky;
+  top: calc(var(--sh-header-h) + var(--sh-category-nav-h) + 1rem);
+}
+
+.cta {
+  margin-top: 1rem;
+}
+
+.note {
+  margin: 0.75rem 0 0;
+  color: var(--sh-color-muted);
+  font-size: var(--sh-font-size-xs);
+}
+
+.secure {
+  align-self: flex-start;
+}
+
+.footnote {
+  margin: 0.5rem 0 0;
+  color: var(--sh-color-muted);
+  font-size: var(--sh-font-size-xs);
+  text-align: center;
+}

@@ -1,16 +1,42 @@
-export const useCatalog = () => ({
-  list: async () => [
-    { id: 'p-101', name: 'Aero Speaker X', price: 2499, category: 'Electronics', rating: 4.8 },
-    { id: 'p-102', name: 'Urban Tote', price: 1599, category: 'Fashion', rating: 4.6 },
-    { id: 'p-103', name: 'Luma Lamp', price: 3199, category: 'Home', rating: 4.9 },
-    { id: 'p-104', name: 'Pulse Bottle', price: 899, category: 'Fitness', rating: 4.5 },
-  ],
-  getById: async (id) => ({
-    id,
-    name: 'Featured Product',
-    price: 2299,
-    category: 'Electronics',
-    rating: 4.8,
-    description: 'Premium everyday product with smart performance and modern design.',
-  }),
-});
+import { keepPreviousData, useMutation, useQuery } from '@tanstack/react-query'
+import {
+  getOffers,
+  getProduct,
+  listCategories,
+  listProducts,
+  listRelatedProducts,
+  subscribeToNewsletter,
+} from '@/features/catalog/services/catalogService'
+
+export const catalogKeys = {
+  all: ['catalog'],
+  categories: () => ['catalog', 'categories'],
+  products: (params) => ['catalog', 'products', params],
+  product: (slug) => ['catalog', 'product', slug],
+  related: (slug) => ['catalog', 'related', slug],
+  offers: () => ['catalog', 'offers'],
+}
+
+export const useCategories = () => useQuery({ queryKey: catalogKeys.categories(), queryFn: listCategories })
+
+/**
+ * Catalogue page for the given filters. With `keepPrevious` the previous page stays on screen while
+ * the next one loads (filtering and paging), so the grid does not collapse into skeletons each time.
+ */
+export function useProducts(params, { keepPrevious = false, enabled = true } = {}) {
+  return useQuery({
+    queryKey: catalogKeys.products(params),
+    queryFn: () => listProducts(params),
+    placeholderData: keepPrevious ? keepPreviousData : undefined,
+    enabled,
+  })
+}
+
+export const useProduct = (slug) => useQuery({ queryKey: catalogKeys.product(slug), queryFn: () => getProduct(slug) })
+
+export const useRelatedProducts = (slug) =>
+  useQuery({ queryKey: catalogKeys.related(slug), queryFn: () => listRelatedProducts(slug) })
+
+export const useOffers = () => useQuery({ queryKey: catalogKeys.offers(), queryFn: getOffers })
+
+export const useNewsletterSignup = () => useMutation({ mutationFn: subscribeToNewsletter })

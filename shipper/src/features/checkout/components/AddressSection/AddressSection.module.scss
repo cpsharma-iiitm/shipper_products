@@ -1,0 +1,92 @@
+.group {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.option {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.875rem 0;
+
+  &:first-child {
+    padding-top: 0;
+  }
+
+  & + & {
+    border-top: 1px solid var(--sh-color-border);
+  }
+
+  // The radio sits level with the first line of text.
+  > :first-child {
+    margin-top: 0.25rem;
+  }
+}
+
+.edit {
+  flex: none;
+}
+
+.body {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.375rem;
+  cursor: pointer;
+}
+
+.heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--sh-color-ink);
+  font-size: var(--sh-font-size-base);
+  font-weight: var(--sh-font-weight-semibold);
+}
+
+// The chosen address reads as a calm summary; the others as options to pick from.
+.selected .heading {
+  font-weight: var(--sh-font-weight-regular);
+}
+
+.badge {
+  font-weight: var(--sh-font-weight-semibold);
+}
+
+.contact {
+  color: var(--sh-color-ink);
+  font-size: var(--sh-font-size-sm);
+}
+
+.address {
+  color: var(--sh-color-muted);
+  font-size: var(--sh-font-size-xs);
+}
+
+.selected .address {
+  font-size: var(--sh-font-size-sm);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}

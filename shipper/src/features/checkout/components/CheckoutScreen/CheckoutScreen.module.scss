@@ -1,0 +1,9 @@
+@use '@/styles/mixins' as m;
+
+.page {
+  background: var(--sh-color-surface);
+
+  @include m.up('lg') {
+    background: transparent;
+  }
+}

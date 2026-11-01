@@ -1,12 +1,13 @@
-export default function CheckoutScreen({ order = {} }) {
+import CheckoutFlow from '@/features/checkout/components/CheckoutFlow'
+import styles from './CheckoutScreen.module.scss'
+
+/** Page body for /checkout: the full-width backdrop (a soft grey behind the cards on small screens) around the flow. */
+export default function CheckoutScreen() {
   return (
-    <section>
-      <h2>Checkout</h2>
-      <div style={{ display: 'grid', gap: 16 }}>
-        <div style={{ border: '1px solid #e2e8f0', borderRadius: 12, padding: '1rem' }}>Delivery address</div>
-        <div style={{ border: '1px solid #e2e8f0', borderRadius: 12, padding: '1rem' }}>Payment method</div>
-        <div style={{ border: '1px solid #e2e8f0', borderRadius: 12, padding: '1rem' }}>Order summary: {order.total || 0}</div>
+    <div className={styles.page}>
+      <div className="sh-container">
+        <CheckoutFlow />
       </div>
-    </section>
-  );
+    </div>
+  )
 }

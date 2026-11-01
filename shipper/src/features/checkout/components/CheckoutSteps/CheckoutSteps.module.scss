@@ -1,0 +1,27 @@
+.steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.step {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--sh-font-size-sm);
+}
+
+.done {
+  color: var(--sh-color-success);
+}
+
+.current {
+  color: var(--sh-color-primary);
+}
+
+.upcoming {
+  color: var(--sh-color-muted);
+}
