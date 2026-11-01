@@ -1,0 +1,56 @@
+@use '@/styles/mixins' as m;
+
+.page,
+.editor {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.columns {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(0, 1fr);
+
+  @include m.up('xl') {
+    grid-template-columns: 20rem minmax(0, 1fr);
+    align-items: start;
+  }
+}
+
+.meta {
+  margin: 0;
+  color: var(--sh-color-muted);
+  font-size: var(--sh-font-size-sm);
+}
+
+.link {
+  color: var(--sh-color-primary);
+  font-weight: var(--sh-font-weight-medium);
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.saveBar {
+  position: sticky;
+  z-index: 2;
+  bottom: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--sh-color-border);
+  border-radius: var(--sh-radius-md);
+  background: var(--sh-color-white);
+  box-shadow: var(--sh-shadow-md, 0 4px 16px rgb(0 0 0 / 8%));
+}
+
+.saveText {
+  flex: 1 1 12rem;
+  margin: 0;
+  font-weight: var(--sh-font-weight-medium);
+}

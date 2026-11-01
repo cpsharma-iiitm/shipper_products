@@ -1,0 +1,51 @@
+.skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.balanceRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.label {
+  margin: 0;
+  color: var(--sh-color-navy);
+  font-size: var(--sh-font-size-lg);
+}
+
+.balance {
+  margin: 0;
+  color: var(--sh-color-navy);
+  font-size: var(--sh-font-size-2xl);
+  font-weight: var(--sh-font-weight-bold);
+  letter-spacing: -0.01em;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  margin-top: 0.875rem;
+}
+
+.lastCredit {
+  margin: 0;
+  color: var(--sh-color-muted);
+  font-size: var(--sh-font-size-sm);
+}
+
+.link {
+  color: var(--sh-color-primary);
+  font-size: var(--sh-font-size-sm);
+  font-weight: var(--sh-font-weight-medium);
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
