@@ -1,0 +1,40 @@
+.flat.flat {
+  border: 0;
+  border-radius: 0;
+
+  table {
+    th,
+    td {
+      padding: 0.6875rem 0.75rem;
+      white-space: nowrap;
+    }
+
+    th {
+      padding-block: 0.5rem;
+      font-weight: var(--sh-font-weight-medium);
+    }
+
+    th:first-child,
+    td:first-child {
+      padding-left: 0.75rem;
+    }
+
+    thead input[type='checkbox'] {
+      display: none;
+    }
+  }
+}
+
+// With a selection column the checkbox sits flush left and the first text column follows closely. The
+// selection cell keeps `padding-right: 0 !important` from DataTable, so the gap belongs to the next column.
+.flat:has(thead input[type='checkbox']) table {
+  th:first-child,
+  td:first-child {
+    width: 1px;
+  }
+
+  th:nth-child(2),
+  td:nth-child(2) {
+    padding-left: 0.6875rem;
+  }
+}
