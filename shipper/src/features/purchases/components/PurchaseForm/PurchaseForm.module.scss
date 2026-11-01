@@ -1,0 +1,31 @@
+@use '@/styles/mixins' as m;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8125rem;
+}
+
+.topRow,
+.bottomRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.8125rem 1.3125rem;
+  align-items: start;
+}
+
+@include m.up('xl') {
+  .topRow {
+    grid-template-columns: minmax(0, 1fr) 26rem;
+  }
+
+  .bottomRow {
+    grid-template-columns: minmax(0, 1fr) 20.5rem;
+  }
+}
+
+.footnote {
+  margin: 0;
+  color: var(--sh-color-muted);
+  font-size: var(--sh-font-size-2xs);
+}
