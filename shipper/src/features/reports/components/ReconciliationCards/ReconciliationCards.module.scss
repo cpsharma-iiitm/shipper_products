@@ -1,0 +1,45 @@
+@use '@/styles/mixins' as m;
+
+.row {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(0, 1fr);
+
+  @include m.up('xl') {
+    grid-template-columns: minmax(0, 1fr) 21.5rem;
+  }
+}
+
+.reconciliation,
+.wallet {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+}
+
+.lines {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: var(--sh-color-ink);
+  font-size: var(--sh-font-size-sm);
+
+  p {
+    margin: 0;
+  }
+}
+
+.walletLine {
+  margin: 0;
+  color: var(--sh-color-ink);
+  font-size: var(--sh-font-size-sm);
+}
+
+.closing {
+  margin: 0;
+  color: var(--sh-color-navy);
+  font-size: var(--sh-font-size-lg);
+  font-weight: var(--sh-font-weight-bold);
+}

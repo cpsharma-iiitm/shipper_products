@@ -1,6 +1,11 @@
-export const useShipments = () => ({
-  list: async () => [
-    { id: 'SHP-1', status: 'In transit', city: 'Delhi' },
-    { id: 'SHP-2', status: 'Packed', city: 'Bengaluru' },
-  ],
-});
+import { keepPreviousData, useQuery } from '@tanstack/react-query'
+import { getShipments } from '@/features/shipping/services/shippingService'
+
+export const shippingKeys = {
+  all: ['admin', 'shipments'],
+  list: (params) => [...shippingKeys.all, 'list', params],
+}
+
+export function useShipments(params) {
+  return useQuery({ queryKey: shippingKeys.list(params), queryFn: () => getShipments(params), placeholderData: keepPreviousData })
+}
