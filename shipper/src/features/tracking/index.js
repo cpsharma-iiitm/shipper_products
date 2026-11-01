@@ -1,1 +1,2 @@
-export { default } from './trackingService';
+export { default as ShipmentTracker } from './components/ShipmentTracker'
+export { default as TrackShipment } from './components/TrackShipment'

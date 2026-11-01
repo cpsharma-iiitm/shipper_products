@@ -1,1 +1,1 @@
-export { default } from './TrackingResult';
+export { default } from './TrackingResult'

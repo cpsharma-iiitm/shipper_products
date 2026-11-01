@@ -1,0 +1,80 @@
+.root {
+  overflow: hidden;
+  border: 1px solid var(--sh-color-border);
+  border-radius: var(--sh-radius-md);
+  background: var(--sh-color-white);
+}
+
+.scroll {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  min-width: 26rem;
+  border-spacing: 0;
+  border-collapse: separate;
+  color: var(--sh-color-ink);
+  font-size: var(--sh-font-size-base);
+
+  th,
+  td {
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid var(--sh-color-border);
+    text-align: left;
+    vertical-align: middle;
+  }
+
+  thead th {
+    background: var(--sh-color-surface);
+    color: var(--sh-color-muted);
+    font-size: var(--sh-font-size-sm);
+    font-weight: var(--sh-font-weight-semibold);
+  }
+
+  tbody:last-of-type tr:last-child > * {
+    border-bottom: 0;
+  }
+}
+
+.check {
+  width: 5.5rem;
+  text-align: center !important;
+
+  > span {
+    justify-content: center;
+  }
+}
+
+.groupRow > * {
+  background: var(--sh-color-surface);
+}
+
+.groupName {
+  color: var(--sh-color-muted);
+  font-size: var(--sh-font-size-xs);
+  font-weight: var(--sh-font-weight-semibold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.moduleCell {
+  display: table-cell;
+  font-weight: var(--sh-font-weight-regular, 400);
+}
+
+.moduleText {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 0.75rem;
+}
+
+.moduleName {
+  font-weight: var(--sh-font-weight-medium);
+}
+
+.moduleHint {
+  color: var(--sh-color-muted);
+  font-size: var(--sh-font-size-xs);
+}
