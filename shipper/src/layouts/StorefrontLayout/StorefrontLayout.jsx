@@ -1,21 +1,24 @@
-import { Link } from 'react-router-dom';
+import { Outlet } from 'react-router-dom'
+import AnnouncementBar from './AnnouncementBar'
+import MobileTabBar from './MobileTabBar'
+import StorefrontFooter from './StorefrontFooter'
+import StorefrontHeader from './StorefrontHeader'
+import styles from './StorefrontLayout.module.scss'
 
+/** Customer shell: announcement bar, header with category navigation, page content, footer, mobile tab bar. */
 export default function StorefrontLayout() {
   return (
-    <div>
-      <header style={{ padding: '1rem 2rem', borderBottom: '1px solid #e2e8f0', display: 'flex', gap: '1rem', alignItems: 'center', justifyContent: 'space-between' }}>
-        <Link to="/shop" style={{ fontWeight: 700, textDecoration: 'none', color: '#0f172a' }}>Shipper</Link>
-        <nav style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-          <Link to="/shop">Shop</Link>
-          <Link to="/cart">Cart</Link>
-          <Link to="/orders">Orders</Link>
-          <Link to="/profile">Profile</Link>
-          <Link to="/admin">Admin</Link>
-        </nav>
-      </header>
-      <main style={{ padding: '2rem' }}>
-        <Link to="/shop">Browse products</Link>
+    <div className={styles.shell}>
+      <a href="#main-content" className={styles.skipLink}>
+        Skip to main content
+      </a>
+      <AnnouncementBar />
+      <StorefrontHeader />
+      <main id="main-content" className={styles.main} tabIndex={-1}>
+        <Outlet />
       </main>
+      <StorefrontFooter />
+      <MobileTabBar />
     </div>
-  );
+  )
 }

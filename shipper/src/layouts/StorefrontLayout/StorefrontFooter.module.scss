@@ -1,0 +1,98 @@
+@use '@/styles/mixins' as *;
+
+.footer {
+  padding-block: 4rem 3.5rem;
+  background: var(--sh-color-navy);
+  color: var(--sh-color-footer-link);
+  font-size: var(--sh-font-size-base);
+
+  a:hover {
+    color: var(--sh-color-white);
+  }
+}
+
+.grid {
+  display: grid;
+  gap: 2rem;
+
+  @include up('md') {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  @include up('lg') {
+    grid-template-columns: 434fr 284fr 284fr 310fr;
+    gap: 0;
+  }
+}
+
+.brand {
+  @include up('md') {
+    grid-column: 1 / -1;
+  }
+
+  @include up('lg') {
+    grid-column: auto;
+  }
+}
+
+.tagline {
+  max-width: 22rem;
+  margin: 1.25rem 0 0;
+  font-size: var(--sh-font-size-md);
+  line-height: 1.4;
+}
+
+.contact {
+  margin: 1.5rem 0 0;
+  font-size: var(--sh-font-size-sm);
+}
+
+// The design shows only the brand block, tagline and contact on mobile.
+.links {
+  display: none;
+
+  @include up('md') {
+    display: block;
+    padding-top: 0.125rem;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.0625rem;
+    line-height: 1.35;
+  }
+}
+
+.heading {
+  margin: 0 0 0.0625rem;
+  color: var(--sh-color-white);
+  font-size: var(--sh-font-size-base);
+  font-weight: var(--sh-font-weight-regular);
+  line-height: 1.35;
+}
+
+.bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  margin-top: 2.25rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  font-size: var(--sh-font-size-xs);
+
+  @include down('md') {
+    margin-top: 2rem;
+  }
+}
+
+.payments {
+  display: none;
+  gap: 1rem;
+
+  @include up('md') {
+    display: flex;
+  }
+}
