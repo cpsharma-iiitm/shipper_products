@@ -1,4 +1,4 @@
-import heroImage from '@/features/auth/assets/auth-hero.jpg'
+import heroImage from '@/features/auth/assets/hero.jpg'
 import styles from './AuthHero.module.scss'
 /** Welcome banner above the login and signup forms. The picture is the artboard's still life, a design asset. */
 export default function AuthHero() {

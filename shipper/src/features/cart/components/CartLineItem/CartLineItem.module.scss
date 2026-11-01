@@ -1,3 +1,5 @@
+@use '@/styles/mixins' as m;
+
 .item {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);

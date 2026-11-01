@@ -1,1 +1,1 @@
-export { default } from './Tabs';
+export { default, TabPanel } from './Tabs'

@@ -1,2 +1,3 @@
-export { default as profileService } from './services/profileService';
-export { default as useAdminProfile } from './hooks/useAdminProfile';
+export { default as AdminProfileView } from './components/AdminProfileView'
+
+export { profileKeys } from './hooks/useAdminProfile'
