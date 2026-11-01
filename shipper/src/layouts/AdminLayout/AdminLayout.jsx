@@ -1,21 +1,49 @@
-import { Link, Outlet } from 'react-router-dom';
+import { useEffect, useRef } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Outlet } from 'react-router-dom'
+import clsx from 'clsx'
+import { adminSidebarToggled, selectAdminSidebarCollapsed } from '@/app/store'
+import { useDisclosure } from '@/hooks/useDisclosure'
+import { useOverlay } from '@/hooks/useOverlay'
+import AdminHeader from './AdminHeader'
+import AdminSidebar from './AdminSidebar'
+import styles from './AdminLayout.module.scss'
 
+/** Admin shell: collapsible sidebar (off-canvas on small screens), sticky header and the page outlet. */
 export default function AdminLayout() {
+  const dispatch = useDispatch()
+  const collapsed = useSelector(selectAdminSidebarCollapsed)
+  const mobileMenu = useDisclosure()
+  const sidebarRef = useRef(null)
+
+  // The off-canvas menu behaves like a dialog: focus stays inside, Escape closes, page scroll locks.
+  useOverlay({ open: mobileMenu.isOpen, onClose: mobileMenu.close, containerRef: sidebarRef })
+
+  // Admin screens use the denser form-control scale (styles/_root.scss). The attribute sits on <html> so
+  // modals and drawers rendered through portals, outside this shell, follow suit.
+  useEffect(() => {
+    document.documentElement.dataset.area = 'admin'
+    return () => {
+      delete document.documentElement.dataset.area
+    }
+  }, [])
+
   return (
-    <div style={{ display: 'flex', minHeight: '100vh' }}>
-      <aside style={{ width: 220, background: '#0f172a', color: '#fff', padding: '1.5rem' }}>
-        <h3>Admin</h3>
-        <nav style={{ display: 'grid', gap: '0.75rem' }}>
-          <Link to="/admin" style={{ color: '#fff' }}>Dashboard</Link>
-          <Link to="/admin/products" style={{ color: '#fff' }}>Products</Link>
-          <Link to="/admin/orders" style={{ color: '#fff' }}>Orders</Link>
-          <Link to="/admin/customers" style={{ color: '#fff' }}>Customers</Link>
-          <Link to="/admin/reports" style={{ color: '#fff' }}>Reports</Link>
-        </nav>
-      </aside>
-      <main style={{ flex: 1, padding: '2rem' }}>
-        <Outlet />
-      </main>
+    <div className={clsx(styles.shell, collapsed && styles.collapsed)}>
+      <AdminSidebar
+        ref={sidebarRef}
+        collapsed={collapsed}
+        open={mobileMenu.isOpen}
+        onToggleCollapse={() => dispatch(adminSidebarToggled())}
+        onNavigate={mobileMenu.close}
+      />
+      {mobileMenu.isOpen && <div className={styles.scrim} onClick={mobileMenu.close} aria-hidden="true" />}
+      <div className={styles.body}>
+        <AdminHeader onOpenMenu={mobileMenu.open} menuExpanded={mobileMenu.isOpen} />
+        <main id="main-content" className={styles.content} tabIndex={-1}>
+          <Outlet />
+        </main>
+      </div>
     </div>
-  );
+  )
 }

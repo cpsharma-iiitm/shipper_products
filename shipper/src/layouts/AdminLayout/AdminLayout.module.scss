@@ -1,0 +1,46 @@
+@use '@/styles/mixins' as *;
+
+.shell {
+  min-height: 100vh;
+  background: var(--sh-color-surface);
+}
+
+.body {
+  display: flex;
+  min-height: 100vh;
+  min-width: 0;
+  flex-direction: column;
+  transition: margin-left 200ms ease;
+
+  @include up('lg') {
+    margin-left: var(--sh-admin-sidebar-w);
+  }
+}
+
+.collapsed .body {
+  @include up('lg') {
+    margin-left: var(--sh-admin-sidebar-w-collapsed);
+  }
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+  padding: 1rem;
+  outline: none;
+
+  @include up('lg') {
+    padding: var(--sh-admin-content-padding);
+  }
+}
+
+.scrim {
+  position: fixed;
+  z-index: calc(var(--sh-z-modal) - 1);
+  inset: 0;
+  background: var(--sh-color-scrim);
+
+  @include up('lg') {
+    display: none;
+  }
+}

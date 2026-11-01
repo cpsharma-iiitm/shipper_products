@@ -1,0 +1,12 @@
+.bar {
+  display: flex;
+  min-height: var(--sh-announcement-h);
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.25rem 1rem;
+  background: var(--sh-color-navy);
+  color: var(--sh-color-white);
+  font-size: var(--sh-font-size-xs);
+  text-align: center;
+}

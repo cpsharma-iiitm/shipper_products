@@ -1,20 +1,13 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react'
 
-export function useOnClickOutside(ref, handler) {
+/** Calls `handler` on a pointer press outside the element held by `ref`. */
+export function useOnClickOutside(ref, handler, enabled = true) {
   useEffect(() => {
-    function listener(event) {
-      if (!ref.current || ref.current.contains(event.target)) {
-        return;
-      }
-      handler(event);
+    if (!enabled) return undefined
+    const onPointerDown = (event) => {
+      if (ref.current && !ref.current.contains(event.target)) handler(event)
     }
-
-    document.addEventListener('mousedown', listener);
-    document.addEventListener('touchstart', listener);
-
-    return () => {
-      document.removeEventListener('mousedown', listener);
-      document.removeEventListener('touchstart', listener);
-    };
-  }, [ref, handler]);
+    document.addEventListener('pointerdown', onPointerDown)
+    return () => document.removeEventListener('pointerdown', onPointerDown)
+  }, [ref, handler, enabled])
 }

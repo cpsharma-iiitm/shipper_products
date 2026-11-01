@@ -1,22 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useSyncExternalStore } from 'react'
 
+/** Subscribes to a CSS media query, e.g. useMediaQuery('(min-width: 1024px)'). */
 export function useMediaQuery(query) {
-  const [matches, setMatches] = useState(() => {
-    if (typeof window === 'undefined') return false;
-    return window.matchMedia(query).matches;
-  });
-
-  useEffect(() => {
-    if (typeof window === 'undefined') return undefined;
-
-    const media = window.matchMedia(query);
-    const handler = (event) => setMatches(event.matches);
-
-    setMatches(media.matches);
-    media.addEventListener?.('change', handler);
-
-    return () => media.removeEventListener?.('change', handler);
-  }, [query]);
-
-  return matches;
+  const subscribe = useCallback(
+    (onChange) => {
+      const list = window.matchMedia(query)
+      list.addEventListener('change', onChange)
+      return () => list.removeEventListener('change', onChange)
+    },
+    [query],
+  )
+  return useSyncExternalStore(
+    subscribe,
+    () => window.matchMedia(query).matches,
+    () => false,
+  )
 }

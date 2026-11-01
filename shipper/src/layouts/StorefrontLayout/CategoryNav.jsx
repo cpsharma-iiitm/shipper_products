@@ -1,9 +1,59 @@
-export default function CategoryNav({ items = ['New Arrivals', 'Best Sellers', 'Home', 'Fashion', 'Beauty'] }) {
+import { Link, NavLink } from 'react-router-dom'
+import clsx from 'clsx'
+import { CATEGORIES } from '@/app/config/categories'
+import { paths } from '@/app/router/paths'
+import Icon from '@/components/atoms/Icon'
+import Popover from '@/components/molecules/Popover'
+import styles from './CategoryNav.module.scss'
+
+const linkClass = ({ isActive }) => clsx(styles.link, isActive && styles.active)
+
+export default function CategoryNav() {
   return (
-    <nav style={{ display: 'flex', gap: 12, flexWrap: 'wrap', padding: '0.8rem 1.5rem', background: '#f8fafc', borderBottom: '1px solid #e2e8f0' }}>
-      {items.map((item) => (
-        <span key={item} style={{ color: '#334155', fontSize: 14, fontWeight: 600 }}>{item}</span>
-      ))}
+    <nav aria-label="Categories" className={styles.nav}>
+      <div className={clsx('sh-container', styles.inner)}>
+        <ul className={styles.list}>
+          <li>
+            <Popover
+              trigger={({ props, isOpen }) => (
+                <button type="button" className={clsx(styles.link, styles.trigger, isOpen && styles.active)} {...props}>
+                  All categories
+                  <Icon name="chevron-down" />
+                </button>
+              )}
+            >
+              {({ close }) => (
+                <ul className={styles.menu}>
+                  <li>
+                    <Link to={paths.shop} className={styles.menuLink} onClick={close}>
+                      All products
+                    </Link>
+                  </li>
+                  {CATEGORIES.map((category) => (
+                    <li key={category.slug}>
+                      <Link to={paths.category(category.slug)} className={styles.menuLink} onClick={close}>
+                        {category.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </Popover>
+          </li>
+          {CATEGORIES.map((category) => (
+            <li key={category.slug}>
+              <NavLink to={paths.category(category.slug)} className={linkClass}>
+                {category.label}
+              </NavLink>
+            </li>
+          ))}
+          <li>
+            <NavLink to={paths.offers} className={({ isActive }) => clsx(styles.link, styles.offers, isActive && styles.active)}>
+              Today’s offers
+            </NavLink>
+          </li>
+        </ul>
+      </div>
     </nav>
-  );
+  )
 }

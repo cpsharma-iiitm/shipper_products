@@ -1,5 +1,10 @@
-export const walletTransactions = [
-  { id: 'WT-1', label: 'Order payment', amount: -1299 },
-  { id: 'WT-2', label: 'Refund received', amount: 500 },
-  { id: 'WT-3', label: 'Wallet top-up', amount: 2000 },
-];
+import { formatDate } from '@/lib/date'
+import { formatINR } from '@/lib/format'
+
+const KIND_LABELS = { refund: 'refund', cashback: 'cashback', bonus: 'bonus' }
+
+/** "Last credit: ₹100 refund · 18 Sep 2026" from the wallet summary's `lastCredit`. */
+export function describeLastCredit(lastCredit) {
+  if (!lastCredit) return 'No credits yet'
+  return `Last credit: ${formatINR(lastCredit.amount)} ${KIND_LABELS[lastCredit.kind] ?? 'credit'} · ${formatDate(lastCredit.at)}`
+}
