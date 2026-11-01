@@ -1,8 +1,7 @@
+import { useParams } from 'react-router-dom'
+import { OrderDetail } from '@/features/admin-orders'
+
 export default function AdminOrderDetailPage() {
-  return (
-    <section>
-      <h2>Order detail</h2>
-      <p>Full order timeline, pricing, shipping status, return opportunities, and fulfillment controls.</p>
-    </section>
-  );
+  const { orderNumber } = useParams()
+  return <OrderDetail key={orderNumber} orderNumber={orderNumber} />
 }

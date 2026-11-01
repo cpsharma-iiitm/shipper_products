@@ -1,8 +1,6 @@
+import { ShippingWorkspace } from '@/features/shipping'
+
+/** /admin/shipping: shipments handed to India Post, with label printing and tracking details. */
 export default function ShippingPage() {
-  return (
-    <section>
-      <h2>Shipping</h2>
-      <p>Courier, shipment tracking, manifest and warehouse operations.</p>
-    </section>
-  );
+  return <ShippingWorkspace />
 }

@@ -1,8 +1,5 @@
+import { AdminProfileView } from '@/features/admin-profile'
+
 export default function AdminProfilePage() {
-  return (
-    <section>
-      <h2>Admin profile</h2>
-      <p>Profile settings and password management.</p>
-    </section>
-  );
+  return <AdminProfileView />
 }

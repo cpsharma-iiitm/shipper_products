@@ -1,8 +1,5 @@
+import { OrdersList } from '@/features/admin-orders'
+
 export default function AdminOrdersPage() {
-  return (
-    <section>
-      <h2>Orders</h2>
-      <p>Admin orders workspace, order detail, cancellations and fulfillment controls.</p>
-    </section>
-  );
+  return <OrdersList />
 }
