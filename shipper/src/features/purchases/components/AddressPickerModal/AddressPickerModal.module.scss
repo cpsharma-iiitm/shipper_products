@@ -1,0 +1,25 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.option {
+  padding: 0.875rem 1rem;
+  border: 1px solid var(--sh-color-border);
+  border-radius: var(--sh-radius-md);
+}
+
+.heading {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: var(--sh-font-weight-medium);
+}
+
+.summary {
+  margin: 0.375rem 0 0 1.5rem;
+}

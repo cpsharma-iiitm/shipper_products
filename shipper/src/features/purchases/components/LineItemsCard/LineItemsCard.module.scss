@@ -1,0 +1,81 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8125rem;
+}
+
+// The card header already has its own bottom margin.
+.card > header + * {
+  margin-top: -0.8125rem;
+}
+
+.picker {
+  display: flex;
+  align-items: flex-end;
+  gap: 1.25rem;
+}
+
+.pickerField {
+  flex: 1;
+}
+
+// The card already frames the table, so the table drops its own border (the header band stays).
+.card .table {
+  border: 0;
+  border-radius: 0;
+}
+
+.card .table th {
+  padding-block: 0.625rem;
+  font-size: var(--sh-font-size-2xs);
+}
+
+.card .table td {
+  padding-block: 0.5rem;
+  font-size: var(--sh-font-size-xs);
+  white-space: nowrap;
+}
+
+.shortage {
+  display: block;
+  color: var(--sh-color-danger);
+  font-size: var(--sh-font-size-xs);
+}
+
+.error {
+  margin: -0.5rem 0 0;
+  color: var(--sh-color-danger);
+  font-size: var(--sh-font-size-xs);
+}
+
+.totals {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+  margin: -0.25rem 0 0;
+  color: var(--sh-color-muted);
+  font-size: var(--sh-font-size-sm);
+
+  p {
+    margin: 0;
+  }
+}
+
+.items {
+  color: var(--sh-color-ink);
+}
+
+.available,
+.unavailable {
+  margin: 0;
+  font-size: var(--sh-font-size-sm);
+}
+
+.available {
+  color: var(--sh-color-success);
+}
+
+.unavailable {
+  color: var(--sh-color-danger);
+}

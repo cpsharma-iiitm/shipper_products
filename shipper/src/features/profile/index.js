@@ -1,1 +1,7 @@
-export { default } from './profileService';
+export { default as AccountNav } from './components/AccountNav'
+export { default as AccountShell } from './components/AccountShell'
+export { default as AddressHeading } from './components/AddressHeading'
+export { default as PersonalDetailsCard } from './components/PersonalDetailsCard'
+export { default as SavedAddressesCard } from './components/SavedAddressesCard'
+export { default as SavedProductList } from './components/SavedProductList'
+export { profileKeys, useProfile } from './hooks/useProfile'

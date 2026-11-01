@@ -1,1 +1,1 @@
-export { default } from './AddressPickerModal';
+export { default } from './AddressPickerModal'

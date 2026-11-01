@@ -1,0 +1,51 @@
+.lookup {
+  display: flex;
+  // The button sits level with the label (design p-14), so an error under the field cannot push it down.
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.lookupField {
+  flex: 1;
+}
+
+.find {
+  flex: none;
+}
+
+.matches {
+  display: flex;
+  flex-direction: column;
+  margin: -0.5rem 0 1rem;
+  overflow: hidden;
+  border: 1px solid var(--sh-color-border);
+  border-radius: var(--sh-radius-md);
+}
+
+.match {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 0.125rem;
+  padding: 0.625rem 0.875rem;
+  border: 0;
+  border-bottom: 1px solid var(--sh-color-border);
+  background: var(--sh-color-white);
+  color: var(--sh-color-ink);
+  font-size: var(--sh-font-size-base);
+  text-align: left;
+
+  span {
+    color: var(--sh-color-muted);
+    font-size: var(--sh-font-size-sm);
+  }
+
+  &:hover {
+    background: var(--sh-color-primary-tint);
+  }
+}
+
+li:last-child .match {
+  border-bottom: 0;
+}
