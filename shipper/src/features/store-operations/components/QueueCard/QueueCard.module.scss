@@ -1,0 +1,48 @@
+.card {
+  min-width: 0;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.selection {
+  align-items: center;
+  margin-top: 0.1875rem;
+
+  label {
+    color: var(--sh-color-muted);
+    font-size: var(--sh-font-size-sm);
+  }
+}
+
+.active label {
+  color: var(--sh-color-primary);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+  margin-top: 1.25rem;
+}
+
+.summary {
+  margin: 0;
+  color: var(--sh-color-muted);
+  font-size: var(--sh-font-size-sm);
+}

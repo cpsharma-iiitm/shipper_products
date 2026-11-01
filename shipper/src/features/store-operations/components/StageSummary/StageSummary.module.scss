@@ -1,0 +1,43 @@
+@use '@/styles/mixins' as m;
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @include m.up('lg') {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.125rem;
+  }
+}
+
+// Label at the top, number lower right: the placement used by the summary cards in the design.
+.card {
+  height: 100%;
+  align-items: stretch;
+  padding: 0.625rem 1.125rem;
+  border-radius: var(--sh-radius-lg);
+}
+
+.value {
+  color: var(--sh-color-navy);
+}
+
+.warning {
+  color: var(--sh-color-warning);
+}
+
+.danger {
+  color: var(--sh-color-danger);
+}
+
+.info {
+  color: var(--sh-color-primary);
+}
+
+.neutral {
+  color: var(--sh-color-muted);
+}

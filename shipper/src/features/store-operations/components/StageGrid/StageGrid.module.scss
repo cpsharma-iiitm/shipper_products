@@ -1,0 +1,19 @@
+@use '@/styles/mixins' as m;
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+  gap: 1.25rem;
+
+  @include m.up('xl') {
+    grid-template-columns: minmax(0, 1fr) var(--panel-width, 24rem);
+  }
+}
+
+.column {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 1.125rem;
+}

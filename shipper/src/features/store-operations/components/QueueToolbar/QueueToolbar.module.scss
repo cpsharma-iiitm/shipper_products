@@ -1,0 +1,20 @@
+// The design's filter row is 36px tall, between the small (34px) and medium (40px) control sizes, so the
+// medium size is re-scoped here instead of hard-coding heights on each control.
+.toolbar {
+  --sh-control-h-md: 36px;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.search {
+  flex: 1 1 14rem;
+  min-width: 0;
+}
+
+.filter {
+  flex: none;
+  max-width: 100%;
+}
