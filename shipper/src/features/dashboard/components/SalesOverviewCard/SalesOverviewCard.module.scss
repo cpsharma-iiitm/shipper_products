@@ -1,0 +1,56 @@
+.range {
+  margin: -0.125rem 0 0.5625rem;
+  color: var(--sh-color-muted);
+  font-size: var(--sh-font-size-sm);
+}
+
+.legendRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.axisTitle {
+  margin: 0;
+  color: var(--sh-color-muted);
+  font-size: var(--sh-font-size-sm);
+}
+
+.legend {
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  color: var(--sh-color-primary);
+  font-size: var(--sh-font-size-xs);
+
+  li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+  }
+}
+
+.currentKey,
+.previousKey {
+  width: 9px;
+  height: 9px;
+  border: 2px solid var(--sh-color-primary);
+  border-radius: 50%;
+}
+
+.currentKey {
+  background: var(--sh-color-primary);
+}
+
+.previousKey {
+  background: transparent;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
